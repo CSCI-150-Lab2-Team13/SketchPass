@@ -6,11 +6,11 @@ WHITE = (255, 255, 255)
 
  
 # This sets the WIDTH and HEIGHT of each grid location
-WIDTH = 15
-HEIGHT = 15
-SIZE = 30
+WIDTH = 5
+HEIGHT = 5
+SIZE = 50
 # This sets the margin between each cell
-MARGIN = 5
+MARGIN = 2
 
 grid = [[0]*SIZE for i in range(SIZE)]
  
@@ -18,7 +18,7 @@ grid = [[0]*SIZE for i in range(SIZE)]
 pygame.init()
  
 # Set the HEIGHT and WIDTH of the screen
-WINDOW_SIZE = [605, 605]
+WINDOW_SIZE = [(SIZE * (MARGIN + WIDTH)) + MARGIN, (SIZE * (MARGIN + HEIGHT)) + MARGIN]
 screen = pygame.display.set_mode(WINDOW_SIZE)
  
 # Set title of screen
