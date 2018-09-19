@@ -3,8 +3,7 @@ from random import randint
 #
 # GENERATES A RANDOM GRID BASED ON PROBABILIY OF CHOICE, CAN USE TO GENERATE NEGATIVE EXAMPLES FOR SUPERVISED TRAINING
 # 
-def create_rand_grid(prob):
-    SIZE = 50
+def create_rand_grid(prob, SIZE):
     grid = np.random.choice(a=[False, True], size=(SIZE, SIZE), p=[prob, 1-prob])  
     return grid
     #(','.join(str(col) for row in grid for col in row))

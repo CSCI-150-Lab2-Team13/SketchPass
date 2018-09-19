@@ -1,16 +1,16 @@
 import pygame
-def create_grid():
+def create_grid(SIZE):
     # Define some colors
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
 
      
     # This sets the WIDTH and HEIGHT of each grid location
-    WIDTH = 5
-    HEIGHT = 5
-    SIZE = 50
+    WIDTH = 10
+    HEIGHT = 10
+
     # This sets the margin between each cell
-    MARGIN = 2
+    MARGIN = 1
 
     grid = [[0]*SIZE for i in range(SIZE)]
      
@@ -25,10 +25,10 @@ def create_grid():
     done = False
      
     # Used to manage how fast the screen updates
-    clock = pygame.time.Clock()
+    #clock = pygame.time.Clock()
      
     # -------- Main Program Loop -----------
-    pressed = False
+
     while not done:
         for event in pygame.event.get():  # User did something
             pos = pygame.mouse.get_pos()
@@ -38,20 +38,13 @@ def create_grid():
 
             if event.type == pygame.QUIT:  # If user clicked close
                 done = True  # Flag that we are done so we exit this loop
-            elif event.type == pygame.MOUSEBUTTONDOWN and not pressed:
-                # User clicks the mouse. Get the position
-                    pressed = True
-                    # Set that location to one
+            elif pygame.mouse.get_pressed()[0] and row < SIZE and column < SIZE and row > -1 and column > -1:
                     grid[row][column] = 1
-            elif event.type == pygame.MOUSEBUTTONUP:
-                pressed = False
-            elif pressed and row < SIZE and column < SIZE and row > -1 and column > -1:
-                    pos = pygame.mouse.get_pos()
-                    # Change the x/y screen coordinates to grid coordinates
-                    column = pos[0] // (WIDTH + MARGIN)
-                    row = pos[1] // (HEIGHT + MARGIN)
-                    # Set that location to one
-                    grid[row][column] = 1
+                  #  grid[row + 1][column] = 1
+                   # grid[row - 1][column] = 1
+                    #grid[row][column + 1] = 1
+                    #grid[row][column - 1] = 1
+                    continue
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_s:
                     if sum(map(sum, grid)) > 20:
@@ -77,7 +70,7 @@ def create_grid():
                                   HEIGHT])
      
         # Limit to 60 frames per second
-        clock.tick(60)
+        #clock.tick(60)
      
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
