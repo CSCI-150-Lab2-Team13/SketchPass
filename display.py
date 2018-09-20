@@ -11,10 +11,10 @@ def display_grid(grid):
     clock = pygame.time.Clock()
 
     # This sets the WIDTH and HEIGHT of each grid location
-    WIDTH = 5
-    HEIGHT = 5
+    WIDTH = 10
+    HEIGHT = 10
     # This sets the margin between each cell
-    MARGIN = 2
+    MARGIN = 1
 
     # Set the HEIGHT and WIDTH of the screen
     WINDOW_SIZE = [(SIZE * (MARGIN + WIDTH)) + MARGIN, (SIZE * (MARGIN + HEIGHT)) + MARGIN]

@@ -4,7 +4,7 @@ from random import randint
 # GENERATES A RANDOM GRID BASED ON PROBABILIY OF CHOICE, CAN USE TO GENERATE NEGATIVE EXAMPLES FOR SUPERVISED TRAINING
 # 
 def create_rand_grid(prob, SIZE):
-    grid = np.random.choice(a=[False, True], size=(SIZE, SIZE), p=[prob, 1-prob])  
+    grid = np.random.choice(a=[True, False], size=(SIZE, SIZE), p=[prob, 1-prob])  
     return grid
     #(','.join(str(col) for row in grid for col in row))
 
@@ -20,8 +20,8 @@ def create_pos_grid(grid):
     for i in range(1, rows - 1):
         for j in range(1, cols - 1):
             if grid[i][j] == 1:
-                x = randint(1,5)
-                #x = randint(1,6)
+                #x = randint(1,5)
+                x = randint(1,8)
                 if   x == 1:
                     grid[i][j-1] = flip(grid[i][j-1])
                 elif x == 2:
