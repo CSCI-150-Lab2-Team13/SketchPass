@@ -13,7 +13,7 @@ def create_grid(SIZE):
     MARGIN = 1
 
     grid = [[0]*SIZE for i in range(SIZE)]
-     
+    #pts = []
     # Initialize pygame
     pygame.init()
      
@@ -40,15 +40,13 @@ def create_grid(SIZE):
                 done = True  # Flag that we are done so we exit this loop
             elif pygame.mouse.get_pressed()[0] and row < SIZE and column < SIZE and row > -1 and column > -1:
                     grid[row][column] = 1
-                  #  grid[row + 1][column] = 1
-                   # grid[row - 1][column] = 1
-                    #grid[row][column + 1] = 1
-                    #grid[row][column - 1] = 1
+                    #pts.append([row,col])
                     continue
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_s:
                     if sum(map(sum, grid)) > 20:
                         return grid
+                        #return pts
                         #return (','.join(str(col) for row in grid for col in row)) #Convert to string
                 if event.key == pygame.K_c:
                     grid = [[0]*SIZE for i in range(SIZE)]

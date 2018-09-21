@@ -11,8 +11,8 @@ def display_grid(grid):
     clock = pygame.time.Clock()
 
     # This sets the WIDTH and HEIGHT of each grid location
-    WIDTH = 10
-    HEIGHT = 10
+    WIDTH = 15
+    HEIGHT = 15
     # This sets the margin between each cell
     MARGIN = 1
 
