@@ -4,17 +4,24 @@ def display_grid(grid):
     pygame.init()
     SIZE = len(grid) #As all grids will be squares
     # Define some colors
-    BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
 
+    BLACK = (0, 0, 0)
+    GREEN = (0, 255, 0)
+    RED = (255, 0, 0)
+    BLUE = (0,0,255)
+    PURPLE = (142,68,173)
+    ORANGE = (230,126,34)
+    GREY = (127,140,141)
+    TUQUOISE = (52, 231, 228)
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
 
     # This sets the WIDTH and HEIGHT of each grid location
-    WIDTH = 15
-    HEIGHT = 15
+    WIDTH = 25
+    HEIGHT = 25
     # This sets the margin between each cell
-    MARGIN = 1
+    MARGIN = 5
 
     # Set the HEIGHT and WIDTH of the screen
     WINDOW_SIZE = [(SIZE * (MARGIN + WIDTH)) + MARGIN, (SIZE * (MARGIN + HEIGHT)) + MARGIN]
@@ -24,6 +31,8 @@ def display_grid(grid):
         # Set the screen background
     screen.fill(BLACK)
     done = False
+    colors = [BLACK, GREEN, RED, BLUE, PURPLE, ORANGE, GREY, TUQUOISE]
+    set_color = 0
     while not done:
         for event in pygame.event.get():  # User did something
             if event.type == pygame.QUIT:  # If user clicked close

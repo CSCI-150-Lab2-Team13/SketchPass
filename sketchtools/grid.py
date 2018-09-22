@@ -1,16 +1,23 @@
 import pygame
 def create_grid(SIZE):
     # Define some colors
-    BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
 
-     
+    BLACK = (0, 0, 0)
+    GREEN = (0, 255, 0)
+    RED = (255, 0, 0)
+    BLUE = (0,0,255)
+    PURPLE = (142,68,173)
+    ORANGE = (230,126,34)
+    GREY = (127,140,141)
+    TUQUOISE = (52, 231, 228)
+
     # This sets the WIDTH and HEIGHT of each grid location
-    WIDTH = 15
-    HEIGHT = 15
+    WIDTH = 25
+    HEIGHT = 25
 
     # This sets the margin between each cell
-    MARGIN = 1
+    MARGIN = 5
 
     grid = [[0]*SIZE for i in range(SIZE)]
     #pts = []
@@ -26,7 +33,9 @@ def create_grid(SIZE):
      
     # Used to manage how fast the screen updates
     #clock = pygame.time.Clock()
-     
+    colors = [ WHITE, BLACK, GREEN, RED, BLUE, PURPLE, ORANGE, GREY, TUQUOISE]
+    max_index = len (colors) - 1
+    set_color = 1
     # -------- Main Program Loop -----------
 
     while not done:
@@ -39,27 +48,30 @@ def create_grid(SIZE):
             if event.type == pygame.QUIT:  # If user clicked close
                 done = True  # Flag that we are done so we exit this loop
             elif pygame.mouse.get_pressed()[0] and row < SIZE and column < SIZE and row > -1 and column > -1:
-                    grid[row][column] = 1
+                    #set_color = Color()
+                    grid[row][column] = set_color
                     #pts.append([row,col])
                     continue
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_s:
-                    if sum(map(sum, grid)) > 20:
+                    if sum(map(sum, grid)) > 5:
                         return grid
                         #return pts
                         #return (','.join(str(col) for row in grid for col in row)) #Convert to string
+                if event.key == pygame.K_n:
+                    if set_color == max_index:
+                        set_color = 1
+                    else:
+                        set_color = set_color + 1
                 if event.key == pygame.K_c:
                     grid = [[0]*SIZE for i in range(SIZE)]
-     
-        # Set the screen background
+             # Set the screen background
         screen.fill(BLACK)
      
         # Draw the grid
         for row in range(SIZE):
             for column in range(SIZE):
-                color = WHITE
-                if grid[row][column] == 1:
-                    color = BLACK
+                color = colors[grid[row][column]]
                 pygame.draw.rect(screen,
                                  color,
                                  [(MARGIN + WIDTH) * column + MARGIN,

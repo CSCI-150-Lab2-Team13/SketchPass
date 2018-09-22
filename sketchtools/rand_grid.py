@@ -21,7 +21,7 @@ def create_pos_grid(grid):
         for j in range(1, cols - 1):
             if grid[i][j] == 1:
                 #x = randint(1,5)
-                x = randint(1,50)
+                x = randint(1,65)
                 if   x == 1:
                     grid[i][j-1] = flip(grid[i][j-1])
                 elif x == 2:
