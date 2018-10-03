@@ -6,17 +6,30 @@ from django.db import models
 class MyModelName(models.Model):
     """A typical class defining a model, derived from the Model class."""
 
-    # Fields
+    # User DB
     # user_id = #models.
     # email
-    # image_password = #
-    # backup_password #
+    # image_password = 
+    # website array
+
+    #passwordDB
+    # user_id
     # website_id
+    # password
+
     # --->Websites Db
-    #	Website Name
-    #	Website Username
+    #	user_id
+    #	website_id
+    #	url
+    #	Website name
+    #	desc
+    # 	email/username
+    #	category
+    #	
     #	Website Password
     # 	Array of Categories
+    # 	[Email, Finance, School, Work,
+    #	 Entertainment, Hobbied, Shopping, Misc.]
     my_field_name = models.CharField(max_length=20, help_text='Enter field documentation')
     
 
