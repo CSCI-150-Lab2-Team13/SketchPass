@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sketchtools.apps.SketchtoolsConfig'.
+    'sketchtools.apps.SketchtoolsConfig',
     'mainApp.apps.MainappConfig'
 ]
 
