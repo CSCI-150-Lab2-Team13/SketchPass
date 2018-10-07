@@ -16,8 +16,6 @@ from sklearn.ensemble import IsolationForest
 def main():
   SIZE = 6
   base = []
-  base_flat = []
-  y = []
   res = gr.create_grid(SIZE)
   if(res == 1):
     print("QUIT")
@@ -26,7 +24,7 @@ def main():
   res = np.array(res)
   res = res.flatten()
   #y.append(1)
-  base_flat.append(res)
+
 
 if __name__ == "__main__":
     main()
