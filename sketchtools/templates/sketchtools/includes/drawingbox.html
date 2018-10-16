@@ -1,6 +1,44 @@
 {% block content %}
-
-<canvas id = "canvas" width="600" height="600">
+<div id="sketch-holder">
 	
-</canvas>
+
+</div>
+<div id = "colors-box">
+	<div class="btn-group btn-group-toggle" data-toggle="buttons">
+	  <label class="btn btn-secondary active colors-box" for="option1">
+	    <input type="radio" name="options" id="option1" autocomplete="off" checked> Black
+	  </label>
+	  <label class="btn btn-secondary colors-box" for="option2">
+	    <input type="radio" name="options" id="option2" autocomplete="off"> Green
+	  </label>
+	  <label class="btn btn-secondary colors-box" for="option3">
+	    <input type="radio" name="options" id="option3" autocomplete="off"> Red
+	  </label>
+	  <label class="btn btn-secondary colors-box" for="option4">
+	    <input type="radio" name="options" id="option4" autocomplete="off"> Blue
+	  </label>
+	  <label class="btn btn-secondary colors-box" for="option5">
+	    <input type="radio" name="options" id="option5" autocomplete="off"> Purple
+	  </label>
+	  <label class="btn btn-secondary colors-box" for="option6">
+	    <input type="radio" name="options" id="option6" autocomplete="off"> Orange
+	  </label>
+	  <label class="btn btn-secondary colors-box" for="option7">
+	    <input type="radio" name="options" id="option7" autocomplete="off"> Yellow
+	  </label>
+	  <label class="btn btn-secondary colors-box" for="option8">
+	    <input type="radio" name="options" id="option8" autocomplete="off"> Turquoise
+	  </label>
+	  <label class="btn btn-secondary colors-box" for="option9">
+	    <input type="radio" name="options" id="option9" autocomplete="off"> Erase
+	  </label>
+	</div>
+	<br>
+	<br>
+	<div class="btn-group btn-group-toggle" data-toggle="buttons">
+		<label class=" btn btn-secondary colors-box" for="clear" onclick="clearAll()">
+		<input type="radio" name="clearbutton" id="clear" autocomplete="off"> Clear All
+	</div>
+</div>
+
 {% endblock %}
