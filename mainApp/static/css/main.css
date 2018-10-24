@@ -1,0 +1,56 @@
+#grid{
+	border: 1px solid black;
+	background-size: 100%;
+	position: relative;
+	display: inline-block;
+}
+
+#sketch-holder{
+	text-align: center;
+}
+
+#colors-box{
+	text-align: center;
+	 font-weight: bold;
+}
+
+label[for=option1]{
+	color: rgb(0, 0, 0);
+}
+
+label[for=option2]{
+	color: rgb(0, 255, 0);
+}
+
+label[for=option3]{
+	color: rgb(255, 0, 0);
+}
+
+label[for=option4]{
+	color: rgb(0,0,255);
+}
+
+label[for=option5]{
+	color: rgb(142,68,173);
+}
+
+label[for=option6]{
+	color: rgb(230,126,34);
+}
+
+label[for=option7]{
+	color: rgb(255,255,0);
+}
+
+label[for=option8]{
+	color: rgb(52, 231, 228);
+}
+
+label[for=option9]{
+	color: rgb(255, 255, 255);
+}
+
+label[for=option1]{
+	color: rgb(0, 0, 0);
+}
+

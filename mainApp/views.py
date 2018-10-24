@@ -5,4 +5,4 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-	return render(request, 'sketchtools/index.html')
+	return render(request, 'mainApp/index.html')

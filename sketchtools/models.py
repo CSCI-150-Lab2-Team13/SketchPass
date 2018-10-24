@@ -9,15 +9,26 @@ class Users(models.Model):
     emailID = models.CharField(max_length=20)
 
 
-    # Fields
+    # User DB
     # user_id = #models.
     # email
-    # image_password = #
-    # backup_password #
+    # image_password = 
+    # website array
+
+    #passwordDB
+    # user_id
     # website_id
+    # password
+
     # --->Websites Db
-    #	Website Name
-    #	Website Username
+    #	user_id
+    #	website_id
+    #	url
+    #	Website name
+    #	desc
+    # 	email/username
+    #	category
+    #	
     #	Website Password
     # 	Array of Categories
 
@@ -35,7 +46,10 @@ class Website(models.Model):
 class Passwords(models.Model):
     userID = models.ForeignKey(Users, on_delete=models.CASCADE)
     websiteID = models.ForeignKey(Website, on_delete=models.CASCADE)
-
+    # 	[Email, Finance, School, Work,
+    #	 Entertainment, Hobbied, Shopping, Misc.]
+    my_field_name = models.CharField(max_length=20, help_text='Enter field documentation')
+    
 
     # Metadata
  #  class Meta:

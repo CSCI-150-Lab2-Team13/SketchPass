@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u39iroa%r0z!6@f)t1*l_&y%!zc4_$77p1jr^8bt+q+f1+=og%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -32,12 +32,13 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'sketchtools.apps.SketchtoolsConfig',
+      'mainApp.apps.MainappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
