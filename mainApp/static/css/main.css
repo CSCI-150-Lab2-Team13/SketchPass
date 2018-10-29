@@ -7,11 +7,17 @@
 
 #sketch-holder{
 	text-align: center;
+	padding-right: 5%;
 }
 
 #colors-box{
 	text-align: center;
 	 font-weight: bold;
+}
+
+#mouse-sizes{
+    vertical-align: top; 
+
 }
 
 label[for=option1]{

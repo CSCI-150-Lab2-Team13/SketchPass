@@ -1,8 +1,8 @@
 //Javascript to handle grid creation/drawing
 //using p5
 
-var cols = 8;
-var rows = 8;
+var cols = 9;
+var rows = 9;
 
 //COLORS
 var WHITE = [255, 255, 255];
@@ -18,20 +18,26 @@ var WHITE = [255, 255, 255];
 
 var colors = [WHITE,BLACK,GREEN,RED,BLUE,PURPLE,ORANGE,YELLOW,TURQUOISE];
 var active_color = 1;
+var active_size = 1;
 var grid = [];
 var colors_arr = document.getElementsByClassName('colors-box');
 
+var size_arr = document.getElementsByClassName('size-box');
 //var clearElem = document.getElementById("clear");
 
 
 
 function setup(){
-	var canvas = createCanvas(401,401);
+	var canvas = createCanvas(451,451);
 	
 	//Adding all Event Listeners
 
 	for (let i = 0; i < colors_arr.length; i++) {
-    colors_arr[i].addEventListener('click', changeColor);
+    	colors_arr[i].addEventListener('click', changeColor);
+	}
+
+	for (let i = 0; i < size_arr.length; i++) {
+    	size_arr[i].addEventListener('click', changeSize);
 	}
 	
 //	clearElem.addEventListener('click', clearAll);
@@ -84,6 +90,22 @@ function clearAll(){
 }
 
 
+var changeSize = function(){
+	switch(this.htmlFor){
+		case "option-sm":
+			active_size = 1;
+			break;
+		case "option-md":
+			active_size = 2;
+			break;
+		case "option-lg":
+			active_size = 3;
+			break;
+		default:
+			break;
+	}
+}
+
 
 var changeColor = function() {
 	switch(this.htmlFor){
@@ -111,8 +133,10 @@ var changeColor = function() {
 		case "option8":
 			active_color = 8;
 			break;
-		default:
+		case "option9":
 			active_color = 0;
+		default:
+			break;
 	};
 };
 
@@ -130,7 +154,7 @@ class Cell {
 
   clicked(x, y){
   	let d = dist(x, y, this.x + this.w/2, this.y + this.h/2);
-  	if(d < this.w / 2){
+  	if(d < this.w * active_size / 2 ){
 		this.setColorToActive(); 
 	}
   }

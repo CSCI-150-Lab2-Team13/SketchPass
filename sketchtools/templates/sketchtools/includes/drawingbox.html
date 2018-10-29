@@ -1,44 +1,70 @@
 {% block content %}
-<div id="sketch-holder">
-	
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Sketchpass</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+    </ul>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Login/Register</button>
+  	</div>
+</nav>
+
+
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+	
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+	
+				<li class="nav-item">
+				<a class="nav-link active" id="login-tab" data-toggle="tab" href="#login role="tab" aria-controls="login" aria-selected="true">Login
+				</a>
+				</li>
+		  <li class="nav-item">
+		    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register
+		    </a>
+		  </li>
+		</ul>
+		<hr>
+		<div class="tab-content" id="myTabContent">
+		  <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+		  </div>
+		  <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+		  </div>
+		 
+		  <div id="sketch-holder">
+			  <div class="btn-group-vertical btn-group-toggle" data-toggle="buttons" id = "mouse-sizes">
+			  		  <label class="btn btn-secondary size-box" for="option-lg">
+	    				<input type="radio" name="options-size" id="option-lg" autocomplete="off"> Lg
+					  </label>
+					  <label class="btn btn-secondary size-box" for="option-md">
+					    <input type="radio" name="options-size" id="option-md" autocomplete="off"> Med
+					  </label>
+					  <label class="btn btn-secondary active size-box" for="option-sm">
+					    <input type="radio" name="options-size" id="option-sm" autocomplete="off" checked> Sm
+					  </label>
+		  	  </div>
+		  </div>
+		  {% include "mainApp/includes/colorsbox.html" %}
+
+		</div>
+
+
+		<br>
+    </div>
+  </div>
 </div>
-<div id = "colors-box">
-	<div class="btn-group btn-group-toggle" data-toggle="buttons">
-	  <label class="btn btn-secondary active colors-box" for="option1">
-	    <input type="radio" name="options" id="option1" autocomplete="off" checked> Black
-	  </label>
-	  <label class="btn btn-secondary colors-box" for="option2">
-	    <input type="radio" name="options" id="option2" autocomplete="off"> Green
-	  </label>
-	  <label class="btn btn-secondary colors-box" for="option3">
-	    <input type="radio" name="options" id="option3" autocomplete="off"> Red
-	  </label>
-	  <label class="btn btn-secondary colors-box" for="option4">
-	    <input type="radio" name="options" id="option4" autocomplete="off"> Blue
-	  </label>
-	  <label class="btn btn-secondary colors-box" for="option5">
-	    <input type="radio" name="options" id="option5" autocomplete="off"> Purple
-	  </label>
-	  <label class="btn btn-secondary colors-box" for="option6">
-	    <input type="radio" name="options" id="option6" autocomplete="off"> Orange
-	  </label>
-	  <label class="btn btn-secondary colors-box" for="option7">
-	    <input type="radio" name="options" id="option7" autocomplete="off"> Yellow
-	  </label>
-	  <label class="btn btn-secondary colors-box" for="option8">
-	    <input type="radio" name="options" id="option8" autocomplete="off"> Turquoise
-	  </label>
-	  <label class="btn btn-secondary colors-box" for="option9">
-	    <input type="radio" name="options" id="option9" autocomplete="off"> Erase
-	  </label>
-	</div>
-	<br>
-	<br>
-	<div class="btn-group btn-group-toggle" data-toggle="buttons">
-		<label class=" btn btn-secondary colors-box" for="clear" onclick="clearAll()">
-		<input type="radio" name="clearbutton" id="clear" autocomplete="off"> Clear All
-	</div>
-</div>
+
+
+
+
 
 {% endblock %}
