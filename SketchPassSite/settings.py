@@ -25,20 +25,19 @@ SECRET_KEY = 'u39iroa%r0z!6@f)t1*l_&y%!zc4_$77p1jr^8bt+q+f1+=og%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'mainApp.apps.MainappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'sketchtools.apps.SketchtoolsConfig',
-    'mainApp.apps.MainappConfig'
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
