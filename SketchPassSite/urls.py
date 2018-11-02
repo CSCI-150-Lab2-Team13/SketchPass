@@ -28,7 +28,7 @@ urlpatterns = [
 
 
 urlpatterns += [
-    url(r'^login/', include('sketchtools.urls')),
+    
 ]
 
 urlpatterns += [
