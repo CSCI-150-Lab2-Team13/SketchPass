@@ -1,4 +1,5 @@
 {% block content %}
+{% load widget_tweaks %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Sketchpass</a>
@@ -18,7 +19,7 @@
 
 
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id ="form-modal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 	
@@ -35,35 +36,50 @@
 		</ul>
 		<hr>
 		<div class="tab-content" id="myTabContent">
+
+			<div class = "container-fluid" id="sketch-box">
+				  <div class="btn-group-vertical btn-group-toggle mouse-sizes" data-toggle="buttons">
+				  		  <label class="btn btn-dark size-box" for="option-lg">
+		    				<input type="radio" name="options-size" id="option-lg" autocomplete="off"> Lg
+						  </label>
+						  <label class="btn btn-dark size-box" for="option-md">
+						    <input type="radio" name="options-size" id="option-md" autocomplete="off"> Med
+						  </label>
+						  <label class="btn btn-dark active size-box" for="option-sm">
+						    <input type="radio" name="options-size" id="option-sm" autocomplete="off" checked> Sm
+						  </label>
+			  	 	</div>
+					<div id="sketch-holder"></div>
+					{% include "mainApp/includes/colorsbox.html" %}
+				</div>
+
+
+		  <hr>
+
 		  <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+			<div class ="container">
+				<form method="post" id="login-form" novalidate data-validate-email-url=
+				"{% url 'validate_email' %}">
+				 
+				  {% include 'mainApp/includes/formtemplate.html' with form=login_form %}
 
-			{{ login_form }}
-
+				  <button type="submit" class="btn btn-primary" id = "login-submit" name = "login-submit">Submit</button>
+				</form>
+			</div>
 		  </div>
+
 		  <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-		  		{{ register_form }}
-		  </div>
+			<div class ="container">
+				<form method="post" novalidate id ="register-form">
+				 
+				  {% include 'mainApp/includes/formtemplate.html' with form=register_form %}
 
-
-		 
-		  <div id="sketch-holder">
-			  <div class="btn-group-vertical btn-group-toggle" data-toggle="buttons" id = "mouse-sizes">
-			  		  <label class="btn btn-secondary size-box" for="option-lg">
-	    				<input type="radio" name="options-size" id="option-lg" autocomplete="off"> Lg
-					  </label>
-					  <label class="btn btn-secondary size-box" for="option-md">
-					    <input type="radio" name="options-size" id="option-md" autocomplete="off"> Med
-					  </label>
-					  <label class="btn btn-secondary active size-box" for="option-sm">
-					    <input type="radio" name="options-size" id="option-sm" autocomplete="off" checked> Sm
-					  </label>
-		  	  </div>
+				  <button type="submit" class="btn btn-primary" id = "register-submit" name = "register-submit">Submit</button>
+				</form>
+			</div>
 		  </div>
-		  {% include "mainApp/includes/colorsbox.html" %}
 
 		</div>
-
-
 		<br>
     </div>
   </div>

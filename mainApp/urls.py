@@ -23,5 +23,7 @@ from django.conf.urls import include
 from . import views
 
 urlpatterns = [
-    url('', views.index, name = 'index')
+    url('', views.index, name = 'index'),
+
+    url(r'^ajax/validate_email/$', views.validate_email, name='validate_email')
 ]

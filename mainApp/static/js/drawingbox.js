@@ -3,23 +3,28 @@
 
 var cols = 9;
 var rows = 9;
+var redraw = 1 // Boolean to check if redrawing is necessary, otherwise causes flickering
+
 
 //COLORS
+//These are colors that can be chosen to draw
 var WHITE = [255, 255, 255];
-	BLACK = [0, 0, 0];
-	GREEN = [0, 255, 0];
+	BLACK = [0, 0, 0]; 
+	GREEN = [0, 255, 0]; 
 	RED  = [255, 0, 0];
 	BLUE = [0,0,255];
 	PURPLE = [142,68,173];
 	ORANGE = [230,126,34];
     YELLOW = [255,255,0];
 	TURQUOISE = [52, 231, 228];
-// END OF COLORS
 
+
+// END OF COLORS
+//              0     1     2    3   4    5      6       7       8
 var colors = [WHITE,BLACK,GREEN,RED,BLUE,PURPLE,ORANGE,YELLOW,TURQUOISE];
-var active_color = 1;
-var active_size = 1;
-var grid = [];
+var active_color = 1; //determines index of colors to draw with
+var active_size = 1; // determines size (1, 2, 3 to indicate sm, md, lg)
+var grid = []; //drawing grid
 var colors_arr = document.getElementsByClassName('colors-box');
 
 var size_arr = document.getElementsByClassName('size-box');
@@ -40,12 +45,24 @@ function setup(){
     	size_arr[i].addEventListener('click', changeSize);
 	}
 	
+	$('#login-form').submit(function(e) {
+		submitPassword('id_password_login','login-submit');
+	});
+
+	$('#register-form').submit(function() {
+		submitPassword('id_password_register', 'register-submit');
+	});
+
 //	clearElem.addEventListener('click', clearAll);
 
 	///////
 
 	canvas.parent('sketch-holder');
 	canvas.id('grid');
+
+
+
+
 
 
 	for (let i = 0; i < rows; i++) {
@@ -58,14 +75,19 @@ function setup(){
 
 function draw(){
 	background(0);
-	for (let i = 0; i < rows; i++) {
-		for (let j = 0; j < cols; j++) {
-      		grid[i][j].display();
-      	}
+	if(redraw == 1){
+		for (let i = 0; i < rows; i++) {
+			for (let j = 0; j < cols; j++) {
+	      		grid[i][j].display();
+	      	}
+		}
 	}
+	redraw = 0
+
 }
 
 function mousePressed(event) {
+	redraw = 1
 	for (let i = 0; i < rows; i++) {
 		for (let j = 0; j < cols; j++) {
 		  	grid[i][j].clicked(mouseX,mouseY);
@@ -74,6 +96,7 @@ function mousePressed(event) {
 }
 
 function mouseDragged(event) {
+	redraw = 1
 	for (let i = 0; i < rows; i++) {
 		for (let j = 0; j < cols; j++) {
 		  	grid[i][j].clicked(mouseX,mouseY);
@@ -82,12 +105,14 @@ function mouseDragged(event) {
 }
 
 function clearAll(){
+	redraw = 1
 	for (let i = 0; i < rows; i++) {
 		for (let j = 0; j < cols; j++) {
 		  	grid[i][j].color = colors[0];
 		}
 	}
 }
+
 
 
 var changeSize = function(){
@@ -140,6 +165,41 @@ var changeColor = function() {
 	};
 };
 
+function parseColors(given_color){
+	let len = colors.length
+	for(let i = 0; i < len; i++){
+		if(colors[i] == given_color)
+			return i
+	}
+
+	return -1
+}
+
+
+
+
+
+function submitPassword(input_id, submit_id){
+
+  if(submit_id == "login-submit" || submit_id == "register-submit"){
+    var pass = "";
+	for (let i = 0; i < rows; i++) {
+		for (let j = 0; j < cols; j++) {
+			let val = parseColors(grid[i][j].color);
+			if (val == -1){
+				return; //return before submitted = invalid password
+			}
+		  	pass += val;
+		}
+	}
+
+	//add input here
+	var input = document.getElementById(input_id);
+	input.value = pass;
+  }
+}
+
+
 
 // A Cell object
 class Cell {
@@ -166,7 +226,7 @@ class Cell {
   
 
    display() {
-    stroke(0);
+    //stroke(0);
     fill(this.color);
 	rect(this.x,this.y,this.w,this.h);
   	}
