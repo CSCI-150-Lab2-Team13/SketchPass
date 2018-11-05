@@ -5,14 +5,15 @@ from django.db import models
 
 class Users(models.Model):
     """A typical class defining a model, derived from the Model class."""
-    userID = models.CharField(max_length=20)
-    emailID = models.CharField(max_length=20)
+    email = models.EmailField(max_length=20, unique=True, primary_key=True)
+    userID = models.IntegerField(default=0, unique=True)
+    passwordString = models.CharField(max_length=100)
 
 
     # User DB
     # user_id = #models.
     # email
-    # image_password = 
+    # image_password =
     # website array
 
     #passwordDB
@@ -28,7 +29,7 @@ class Users(models.Model):
     #	desc
     # 	email/username
     #	category
-    #	
+    #
     #	Website Password
     # 	Array of Categories
 
@@ -49,7 +50,7 @@ class Passwords(models.Model):
     # 	[Email, Finance, School, Work,
     #	 Entertainment, Hobbied, Shopping, Misc.]
     my_field_name = models.CharField(max_length=20, help_text='Enter field documentation')
-    
+
 
     # Metadata
  #  class Meta:
