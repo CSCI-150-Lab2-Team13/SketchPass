@@ -33,13 +33,15 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'mainApp',
     'home',
+    'session_security',
+
     'widget_tweaks',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +50,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'session_security.middleware.SessionSecurityMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -61,6 +64,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.core.context_processors.request',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -117,7 +121,25 @@ USE_L10N = True
 USE_TZ = True
 
 
+# Custom defined parameters #
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+#Replace default user model#
+AUTH_USER_MODEL = 'mainApp.User'
+
+#Defines default return url where @login_required decorators are used
+LOGIN_URL =  '/'
+
+#Pretty self explanatory
+LOGOUT_REDIRECT_URL =  '/'
+
+AUTHENTICATION_BACKENDS = ('mainApp.backends.UserAuthBackend',)
+
+#Logout after browser close 
+#NOTE: DOES NOT APPLY IF OTHER TABS OPEN
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

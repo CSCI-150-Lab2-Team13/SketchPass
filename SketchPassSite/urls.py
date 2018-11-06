@@ -24,9 +24,11 @@ from django.conf.urls import include
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'session_security/', include('session_security.urls')),
+
 ]
 
-
+#Separated to keep track of apps
 urlpatterns += [
 	url('home/', include('home.urls')),
 ]

@@ -36,8 +36,9 @@
 		</ul>
 		<hr>
 		<div class="tab-content" id="myTabContent">
-
+			
 			<div class = "container-fluid" id="sketch-box">
+
 				  <div class="btn-group-vertical btn-group-toggle mouse-sizes" data-toggle="buttons">
 				  		  <label class="btn btn-dark size-box" for="option-lg">
 		    				<input type="radio" name="options-size" id="option-lg" autocomplete="off"> Lg
@@ -49,6 +50,7 @@
 						    <input type="radio" name="options-size" id="option-sm" autocomplete="off" checked> Sm
 						  </label>
 			  	 	</div>
+
 					<div id="sketch-holder"></div>
 					{% include "mainApp/includes/colorsbox.html" %}
 				</div>
@@ -58,7 +60,7 @@
 
 		  <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
 			<div class ="container">
-				<form method="post" id="login-form" novalidate data-validate-email-url=
+				<form method="post" id="login-form" data-validate-email-url=
 				"{% url 'validate_email' %}">
 				 
 				  {% include 'mainApp/includes/formtemplate.html' with form=login_form %}
@@ -70,7 +72,7 @@
 
 		  <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
 			<div class ="container">
-				<form method="post" novalidate id ="register-form">
+				<form method="post" id ="register-form">
 				 
 				  {% include 'mainApp/includes/formtemplate.html' with form=register_form %}
 
