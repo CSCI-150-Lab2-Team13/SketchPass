@@ -73,3 +73,31 @@ label[for=option1]{
 	 overflow: auto;
 	 flex-shrink: 0;
 }
+
+body{
+	background-image: linear-gradient(to top, rgba(0, 168, 255,.25), rgba(64, 115, 158,.85));
+	height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.nav-index{
+	background-color: rgba(47, 54, 64,1.0);
+}
+
+.card-container-custom{
+	background-color: #f5f6fa; 
+	border-bottom-left-radius: 3%;
+	border-bottom-right-radius: 3%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+}
+
+#passwords-header-h5{
+	margin: 0 !important;
+}
+
+.nav-custom{
+	
+}

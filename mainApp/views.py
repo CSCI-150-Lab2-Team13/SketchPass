@@ -51,15 +51,13 @@ def index(request):
 
 
 def validate_email(request):
-	email = request.GET.get('email_login', None)
+	email = request.GET.get('email_register', None)
 	data = {
 		'is_taken': User.objects.filter(email__iexact=email).exists()
 	}
 
 	if data['is_taken']:
 		data['error_message'] = 'A user with this email already exists.'
-	else:
-		data['error_message'] = 'All good!'
 	return JsonResponse(data)
 
 
