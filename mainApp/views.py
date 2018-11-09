@@ -21,7 +21,7 @@ def index(request):
 
 			if login_form.is_valid():
 				user = authenticate(email = email, password = password)
-				#AUTHENTICATION NOT WORKING
+				
 				if user is not None:
 				    login(request, user)
 				    if request.user.is_staff:

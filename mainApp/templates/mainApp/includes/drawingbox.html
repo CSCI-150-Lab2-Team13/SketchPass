@@ -60,8 +60,7 @@
 
 		  <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
 			<div class ="container">
-				<form method="post" id="login-form" data-validate-email-url=
-				"{% url 'validate_email' %}">
+				<form method="post" id="login-form">
 				 
 				  {% include 'mainApp/includes/formtemplate.html' with form=login_form %}
 

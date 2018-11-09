@@ -1,6 +1,8 @@
 from django import forms
 from mainApp.models import User
 from django.contrib.auth.hashers import make_password
+from django.core.validators import validate_email
+
 class LoginForm(forms.Form):
 	email_login = forms.EmailField(label = "Email", required = True)
 	password_login = forms.CharField(max_length = 100, widget = forms.HiddenInput(), required = True)
@@ -22,30 +24,38 @@ class RegisterForm(forms.ModelForm):
 		fields = () #custom defined above
 
 	def clean(self):
-		cleaned_data = super(RegisterForm,self).clean()
-		email = cleaned_data.get('email_register')
-		email_verify = cleaned_data.get('email_verify')
-		password_register = cleaned_data.get('password_register')
+		super(RegisterForm,self).clean()
+		email = self.cleaned_data.get('email_register')
+		email_verify = self.cleaned_data.get('email_verify')
+		password_register = self.cleaned_data.get('password_register')
 
-		if (not email):
-			raise forms.ValidationError('Invalid email', code='invalid-register-email')
-	def clean_email(self):
-		email = self.cleaned_data['email']
+		validate_email(email)
+
 		not_unique = User.objects.filter(email__iexact=email).exists()
 		if not_unique:
-			self.add_error('email', "Email already registered!")
+			self.add_error('email_register', "Email already registered!")
 
-	def clean_email_verify(self):
-		cleaned_data = super(RegisterForm,self).clean()
-		email = cleaned_data.get('email_register')
-		email_verify = self.cleaned_data['email_verify']
 		if email != email_verify:
 			self.add_error('email_verify','Emails must match!')
+
+		usedNums = {}
+		uniqueColors = 0
+
+		for char in password_register:
+			if int(char) > 8 or int(char) < 0:
+				self.add_error('password', 'Invalid Password')
+				break
+			usedNums.add(int(char))
+
+		if len(usedNums) < 2:
+			self.add_error('password', 'You must use 2 or more colors!')	
+
+
 
 
 	def save(self, commit = True):   
 		user = super(RegisterForm, self).save(commit = False)
-   		user.email = self.cleaned_data['email_register']
+   		user.email = self.cleaned_data.get('email_register')
    		user.password = make_password(self.cleaned_data['password_register'])
 		if commit:
 			user.save()

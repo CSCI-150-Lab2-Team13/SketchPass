@@ -3,7 +3,7 @@
 
 var cols = 9;
 var rows = 9;
-var redraw = 1 // Boolean to check if redrawing is necessary, otherwise causes flickering
+
 
 
 //COLORS
@@ -69,48 +69,57 @@ function setup(){
 		grid[i] = []
     	for (let j = 0; j < cols; j++) {
       		grid[i][j] = new Cell(i*50, j*50,50,50, 0);
+      		grid[i][j].display();
 	    }
 	  }
 }
 
 function draw(){
 	background(0);
-	if(redraw == 1){
-		for (let i = 0; i < rows; i++) {
-			for (let j = 0; j < cols; j++) {
-	      		grid[i][j].display();
-	      	}
-		}
-	}
-	redraw = 0
-
 }
 
 function mousePressed(event) {
-	redraw = 1
-	for (let i = 0; i < rows; i++) {
-		for (let j = 0; j < cols; j++) {
-		  	grid[i][j].clicked(mouseX,mouseY);
+	if ((mouseX < grid[0][0].x) || 
+		(mouseX > grid[rows - 1][cols - 1].x) ||
+		(mouseY < grid[0][0].y) ||
+        (mouseY > grid[rows-1][cols-1].y)
+	   ){
+	}
+	else{
+		for (let i = 0; i < rows; i++) {
+			for (let j = 0; j < cols; j++) {
+			  	grid[i][j].clicked(mouseX,mouseY);
+			  	grid[i][j].display();
+			}
 		}
 	}
 }
 
 function mouseDragged(event) {
-	redraw = 1
-	for (let i = 0; i < rows; i++) {
-		for (let j = 0; j < cols; j++) {
-		  	grid[i][j].clicked(mouseX,mouseY);
+	if ((mouseX < grid[0][0].x) || 
+		(mouseX > grid[rows - 1][cols - 1].x + 50) ||
+		(mouseY < grid[0][0].y) ||
+        (mouseY > grid[rows-1][cols-1].y + 50)
+	   ){
+	}
+	else{
+		for (let i = 0; i < rows; i++) {
+			for (let j = 0; j < cols; j++) {
+			  	grid[i][j].clicked(mouseX,mouseY);
+			  	grid[i][j].display();
+			}
 		}
 	}
 }
 
 function clearAll(){
-	redraw = 1
 	for (let i = 0; i < rows; i++) {
 		for (let j = 0; j < cols; j++) {
 		  	grid[i][j].color = colors[0];
+		  	grid[i][j].display();
 		}
 	}
+
 }
 
 
@@ -169,10 +178,10 @@ function parseColors(given_color){
 	let len = colors.length
 	for(let i = 0; i < len; i++){
 		if(colors[i] == given_color)
-			return i
+			return i;
 	}
 
-	return -1
+	return -1;
 }
 
 
