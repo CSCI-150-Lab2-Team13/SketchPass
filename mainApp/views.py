@@ -18,7 +18,7 @@ def index(request):
 			login_form = LoginForm(request.POST)
 			email = request.POST.get("email_login", None)
 			password = request.POST.get("password_login", None)
-
+			
 			if login_form.is_valid():
 				user = authenticate(email = email, password = password)
 				
@@ -28,6 +28,8 @@ def index(request):
 			       		return redirect('/admin/')
 				    else:
 				       return redirect("home/index.html")
+			else:
+				return render(request, 'mainApp/index.html', {'login_form' : login_form, 'register_form':register_form, 'state':1})
 
 		elif 'register-submit' in request.POST:
 			register_form = RegisterForm(request.POST)
@@ -43,21 +45,11 @@ def index(request):
 						return redirect('/admin/')
 					else:
 						return redirect("home/index.html")
-	 
+			else:
+				return render(request, 'mainApp/index.html', {'login_form' : login_form, 'register_form':register_form, 'state':2})
 	else:
 		login_form = LoginForm()
 		register_form = RegisterForm()
-	return render(request, 'mainApp/index.html', {'login_form' : login_form, 'register_form':register_form})
-
-
-def validate_email(request):
-	email = request.GET.get('email_register', None)
-	data = {
-		'is_taken': User.objects.filter(email__iexact=email).exists()
-	}
-
-	if data['is_taken']:
-		data['error_message'] = 'A user with this email already exists.'
-	return JsonResponse(data)
+	return render(request, 'mainApp/index.html', {'login_form' : login_form, 'register_form':register_form, 'state':0})
 
 

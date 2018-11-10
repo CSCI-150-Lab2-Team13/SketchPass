@@ -1,6 +1,10 @@
 {% block content %}
 {% load widget_tweaks %}
 
+
+
+
+
 <nav class="navbar navbar-expand-lg nav-index">
   <a class="navbar-brand" href="#">Sketchpass</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,6 +89,30 @@
     </div>
   </div>
 </div>
+
+
+{% if state == 1 %}
+<script>
+	$( document ).ready(function() {
+
+		$('#form-modal').modal('show');
+		$ ('#login-tab').tab('show');
+		$('#form-modal').removeClass('fade');
+	});
+		   
+</script>
+
+{% elif state == 2 %}
+<script>
+	$( document ).ready(function() {
+
+		$('#form-modal').modal('show');
+		$ ('#register-tab').tab('show');
+		$('#form-modal').removeClass('fade');
+	});
+</script>
+
+{% endif %}
 
 
 

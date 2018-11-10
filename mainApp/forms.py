@@ -1,7 +1,8 @@
 from django import forms
 from mainApp.models import User
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import make_password, check_password
 from django.core.validators import validate_email
+from django.contrib.auth import authenticate
 
 class LoginForm(forms.Form):
 	email_login = forms.EmailField(label = "Email", required = True)
@@ -13,6 +14,12 @@ class LoginForm(forms.Form):
 		password_login = cleaned_data.get('password_login')
 		if (not email_login):
 			raise forms.ValidationError("Email is invalid!", code='invalid-login-email')
+
+		user = authenticate(email = email_login, password = password_login)
+				
+		if user is None:
+			raise forms.ValidationError("Either your email or password is incorrect!", code='invalid-login-auth')
+
 	
 class RegisterForm(forms.ModelForm):
 	email_register = forms.EmailField(label = "Email", required = True)
@@ -38,17 +45,17 @@ class RegisterForm(forms.ModelForm):
 		if email != email_verify:
 			self.add_error('email_verify','Emails must match!')
 
-		usedNums = {}
+		usedNums = set()
 		uniqueColors = 0
 
 		for char in password_register:
 			if int(char) > 8 or int(char) < 0:
-				self.add_error('password', 'Invalid Password')
+				self.add_error(None, 'Invalid Password')
 				break
 			usedNums.add(int(char))
 
 		if len(usedNums) < 2:
-			self.add_error('password', 'You must use 2 or more colors!')	
+			self.add_error(None, 'You must use 2 or more colors!')	
 
 
 

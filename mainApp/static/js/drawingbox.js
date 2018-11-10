@@ -80,9 +80,9 @@ function draw(){
 
 function mousePressed(event) {
 	if ((mouseX < grid[0][0].x) || 
-		(mouseX > grid[rows - 1][cols - 1].x) ||
+		(mouseX > grid[rows - 1][cols - 1].x + 50) ||
 		(mouseY < grid[0][0].y) ||
-        (mouseY > grid[rows-1][cols-1].y)
+        (mouseY > grid[rows-1][cols-1].y + 50) 
 	   ){
 	}
 	else{

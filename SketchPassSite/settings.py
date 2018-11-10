@@ -132,7 +132,7 @@ AUTH_USER_MODEL = 'mainApp.User'
 LOGIN_URL =  '/'
 
 #Pretty self explanatory
-LOGOUT_REDIRECT_URL =  '/'
+LOGOUT_REDIRECT_URL =  'mainApp.index'
 
 AUTHENTICATION_BACKENDS = ('mainApp.backends.UserAuthBackend',)
 
