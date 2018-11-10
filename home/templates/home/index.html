@@ -66,9 +66,38 @@
 
   <div class="container-fluid card-columns text-center card-container-custom"   >
 
-    {% for i in "xxxxxxxxxxxxxxxxxxxx" %}
-        {% include "home/includes/cardtemplate.html" %}
+    {% if website %}
+
+    {% for website in website %}
+    <div class="card text-center" style="width: 18rem;">
+    <div class="card text-white bg-dark mb-3" style="width: 18rem;">
+
+      <div class="card-body">
+        <h5 class="card-title">
+        <li> {{website.websiteName}}
+      </h5>
+        <h6 class="card-subtitle mb-2 text-muted">Misc.</h6>
+          <li> {{website.password}}</li>
+        <p class="card-text">{{website.desc}}</p>
+        <a href="#" class="card-link">  <li>{{website.urlNAME }}</li></a>
+
+
+        <!-- possible other link --->
+        <!--<a href="#" class="card-link">link</a> --->
+
+    </div>
+    </div>
+    </div>
+
     {% endfor %}
+    {% else %}
+      <li>Sorry, no Passwords in this list.</li>
+    {% endif %}
+
+
+
+</div>
+
   </div>
 </div>
 

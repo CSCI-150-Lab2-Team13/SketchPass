@@ -7,8 +7,12 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 # Create your views here.
 from django.http import HttpResponse
+from mainApp.models import User
 
 @login_required
 def index(request):
-    return render(request, 'home/index.html', {})
+    user= User.objects.get_by_natural_key(request.user)
+    # passwords = Website.objects.all()
+    websitesValues = user.website_set.values()
+    return render(request, 'home/index.html', {'user':user,'website':websitesValues})
 
