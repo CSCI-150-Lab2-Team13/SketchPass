@@ -10,3 +10,11 @@ class WebsiteForm(forms.ModelForm):
                 'desc',
                 'category',
                 'password' )
+
+        labels = {
+        	"urlNAME": "Url",
+            'websiteName': "Website",
+       		'desc': "Description",
+       		'category': "Category",
+       		'password': "Password"
+        }
