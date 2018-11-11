@@ -14,7 +14,17 @@ from .forms import WebsiteForm
 def index(request):
     user= User.objects.get_by_natural_key(request.user)
     websitesValues = user.website_set.values()
-    return render(request, 'home/index.html', {'user':user,'website':websitesValues})
+    state = 3
+    if request.method == 'POST':
+    	if 'a-z' in request.POST:
+    		state = 1
+    	elif 'category' in request.POST:
+    		state = 2
+    	#elif 'created' in request.POST:
+    	#	state = 3
+
+
+    return render(request, 'home/index.html', {'user':user,'websites':websitesValues, 'state':state})
 
 @login_required
 def website_form(request):
