@@ -5,7 +5,7 @@
 <!-- Navigation Bar ---> 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="home/index.html">SketchPass</a>
+    <a class="navbar-brand" href="/home">SketchPass</a>
       <ul class="navbar-nav mr-auto">
     </ul>
 
@@ -23,15 +23,12 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Status <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a href="/home/add" class="nav-link active"><button class="btn btn-primary my-2 my-sm-0">Add New</button></a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Sort Category
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button class="btn btn-success">Sort Category</button>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Sort (A-Z)</a>
@@ -39,9 +36,6 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Date Created</a>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">TBA</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
@@ -60,15 +54,27 @@
 
 <div class="container" >
 
-            <h5 class="  text-center p-3 bg-dark text-white" id = "passwords-header-h5">Passwords</h5>
+            <h5 class=" passwords-header-h5 text-center p-3 bg-dark text-white">Passwords</h5>
 
 <!-- Middle Cards --->
 
   <div class="container-fluid card-columns text-center card-container-custom"   >
 
-    {% for i in "xxxxxxxxxxxxxxxxxxxx" %}
-        {% include "home/includes/cardtemplate.html" %}
+    {% if website %}
+
+    {% for website in website %}
+      {% include 'home/includes/cardtemplate.html' with desc=website.desc category=website.category name=website.websiteName url=website.urlNAME  %}
+        
+         <!--  {{website.password}} --->
+
     {% endfor %}
+    {% else %}
+      <li>Sorry, no Passwords in this list.</li>
+    {% endif %}
+
+
+</div>
+
   </div>
 </div>
 

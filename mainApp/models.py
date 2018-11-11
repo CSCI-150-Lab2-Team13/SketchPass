@@ -79,19 +79,17 @@ class Website(models.Model):
     #id
     user_ID = models.ForeignKey(User, on_delete=models.CASCADE)
     #django automatically creates autoincrementing id website_ID = models.CharField(max_length=20)
+    password = models.CharField(help_text='Enter field documentation', max_length = 100,default='SOME STRING')
     urlNAME = models.CharField(max_length=100)
     websiteName = models.CharField(max_length=30)
     desc = models.CharField(max_length=250)
     category = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.password + '-' + self.websiteName
 
-class Passwords(models.Model):
-    userID = models.ForeignKey(User, on_delete=models.CASCADE)
-    websiteID = models.ForeignKey(Website, on_delete=models.CASCADE)
-    # 	[Email, Finance, School, Work,
-    #	Entertainment, Hobbied, Shopping, Misc.]
-    password = models.CharField(help_text='Enter field documentation', max_length = 100)
-    
+
+
 
     # Metadata
  #  class Meta:

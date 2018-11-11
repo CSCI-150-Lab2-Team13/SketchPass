@@ -27,7 +27,7 @@ def index(request):
 				    if request.user.is_staff:
 			       		return redirect('/admin/')
 				    else:
-				       return redirect("home/index.html")
+				       return redirect("home/")
 			else:
 				return render(request, 'mainApp/index.html', {'login_form' : login_form, 'register_form':register_form, 'state':1})
 
@@ -44,7 +44,7 @@ def index(request):
 					if request.user.is_staff:
 						return redirect('/admin/')
 					else:
-						return redirect("home/index.html")
+						return redirect("home/")
 			else:
 				return render(request, 'mainApp/index.html', {'login_form' : login_form, 'register_form':register_form, 'state':2})
 	else:
