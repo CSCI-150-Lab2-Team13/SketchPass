@@ -7,5 +7,6 @@ from django.conf.urls import include
 from . import views
 
 urlpatterns = [
-    url('', views.index, name = 'index'),
+    url(r'^$', views.index, name = 'index'),
+    url(r'^add/', views.website_form)
 ]
