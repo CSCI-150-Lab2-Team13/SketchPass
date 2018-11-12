@@ -1,9 +1,10 @@
 //Javascript to handle grid creation/drawing
 //using p5
+var cols = 7;
+var rows = 7;
+// Can't seem to be able to use size to gen grid, have to manually replace
 
-var cols = 9;
-var rows = 9;
-
+size = 64
 
 
 //COLORS
@@ -33,7 +34,9 @@ var size_arr = document.getElementsByClassName('size-box');
 
 
 function setup(){
-	var canvas = createCanvas(451,451);
+	//Can't seem to use row/col *size have to input manually
+	// 7
+	var canvas = createCanvas(449,449);
 	
 	//Adding all Event Listeners
 
@@ -63,12 +66,12 @@ function setup(){
 
 
 
-
+	
 
 	for (let i = 0; i < rows; i++) {
 		grid[i] = []
     	for (let j = 0; j < cols; j++) {
-      		grid[i][j] = new Cell(i*50, j*50,50,50, 0);
+      		grid[i][j] = new Cell(i*64, j*64,64,64, 0);
       		grid[i][j].display();
 	    }
 	  }
@@ -80,9 +83,9 @@ function draw(){
 
 function mousePressed(event) {
 	if ((mouseX < grid[0][0].x) || 
-		(mouseX > grid[rows - 1][cols - 1].x + 50) ||
+		(mouseX > grid[rows - 1][cols - 1].x + 64) ||
 		(mouseY < grid[0][0].y) ||
-        (mouseY > grid[rows-1][cols-1].y + 50) 
+        (mouseY > grid[rows-1][cols-1].y + 64) 
 	   ){
 	}
 	else{
@@ -96,10 +99,11 @@ function mousePressed(event) {
 }
 
 function mouseDragged(event) {
+	event.preventDefault()
 	if ((mouseX < grid[0][0].x) || 
-		(mouseX > grid[rows - 1][cols - 1].x + 50) ||
+		(mouseX > grid[rows - 1][cols - 1].x + 64) ||
 		(mouseY < grid[0][0].y) ||
-        (mouseY > grid[rows-1][cols-1].y + 50)
+        (mouseY > grid[rows-1][cols-1].y + 64)
 	   ){
 	}
 	else{
