@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-
+#from django.db.models.functions import Lower
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 # Create your views here.
@@ -22,7 +22,10 @@ def index(request):
     		state = 2
     	#elif 'created' in request.POST:
     	#	state = 3
-
+    if request.method == 'GET':
+    	if "search" in request.GET:
+    		query = request.GET.get("query", "")
+    		websitesValues = websitesValues.filter(websiteName__icontains=query).values()
 
     return render(request, 'home/index.html', {'user':user,'websites':websitesValues, 'state':state})
 
