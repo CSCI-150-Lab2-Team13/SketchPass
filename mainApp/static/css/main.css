@@ -91,7 +91,7 @@ body{
 	border-bottom-left-radius: 3%;
 	border-bottom-right-radius: 3%;
 	padding-top: 3%;
-	padding-bottom: 3%;
+	padding-bottom: 2%;
 
 }
 
@@ -109,3 +109,27 @@ body{
 }
 
 
+
+.edit-button{
+	position: absolute;
+	bottom: 2%;
+	right: 1%;
+}
+
+.delete-button{
+	position: absolute;
+	bottom: 5%;
+	right: 3%;
+}
+
+.copy-username-button{
+	position: absolute;
+	bottom: 2%;
+	right: 15%;
+}
+
+.copy-password-button{
+	position: absolute;
+	bottom: 2%;
+	right: 28%;
+}

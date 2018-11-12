@@ -84,6 +84,7 @@ class Website(models.Model):
     websiteName = models.CharField(max_length=30)
     desc = models.CharField(max_length=250)
     category = models.CharField(max_length=20)
+    username = models.CharField(max_length=100)
 
     def __str__(self):
         return self.password + '-' + self.websiteName

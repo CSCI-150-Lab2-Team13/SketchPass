@@ -7,6 +7,7 @@ class WebsiteForm(forms.ModelForm):
         fields = (
                 'urlNAME',
                 'websiteName',
+                'username',
                 'desc',
                 'category',
                 'password' )
@@ -16,5 +17,6 @@ class WebsiteForm(forms.ModelForm):
             'websiteName': "Website",
        		'desc': "Description",
        		'category': "Category",
-       		'password': "Password"
+       		'password': "Password",
+            'username': "Username"
         }

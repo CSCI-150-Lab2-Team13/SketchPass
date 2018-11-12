@@ -69,19 +69,19 @@
     
       {% if state == 1 %}
         {% for website in websites|dictsort:"websiteName" %}
-          {% include 'home/includes/cardtemplate.html' with desc=website.desc category=website.category name=website.websiteName url=website.urlNAME  %}
+          {% include 'home/includes/cardtemplate.html' with website_id=website.id desc=website.desc username=website.username category=website.category name=website.websiteName url=website.urlNAME  %}
         {% endfor %}
       {% elif state == 2 %}
         {% for website in websites|dictsort:"category" %}
-         {% include 'home/includes/cardtemplate.html' with desc=website.desc category=website.category name=website.websiteName url=website.urlNAME  %}
+         {% include 'home/includes/cardtemplate.html' with website_id=website.id desc=website.desc username=website.username category=website.category name=website.websiteName url=website.urlNAME  %}
         {% endfor %}
       {% else %}
         {% for website in websites%}
-         {% include 'home/includes/cardtemplate.html' with desc=website.desc category=website.category name=website.websiteName url=website.urlNAME  %}
+         {% include 'home/includes/cardtemplate.html' with website_id=website.id desc=website.desc username=website.username password=website.password category=website.category name=website.websiteName url=website.urlNAME  %}
         {% endfor %}
       {% endif %}
     {% else %}
-      <li>Sorry, no Passwords in this list.</li>
+     <div class="text-center">No websites yet! Make one now!</div>
     {% endif %}
 
   </div>

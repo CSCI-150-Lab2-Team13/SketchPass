@@ -46,3 +46,28 @@ def website_form(request):
     args['website_form'] = form
 
     return render(request, 'home/website_form.html', args)
+
+@login_required
+def edit_website(request):
+	if request.method == 'POST':
+		if 'edit-form' in request.POST:
+			website_id = request.POST.get("edit-form")
+			item = Website.objects.get(pk=website_id)
+			edit_form = WebsiteForm(instance=item)
+			return render(request, 'home/edit.html', {"website_id": website_id, 'edit_form' : edit_form})
+		elif 'edit-submit' in request.POST:
+			website_id = request.POST.get("edit-submit")			
+			item = Website.objects.get(pk=website_id)
+			edit_form = WebsiteForm(request.POST, instance=item)
+			if edit_form.is_valid():
+				edit_form.save()
+			else:
+				edit_form = WebsiteForm(instance=item)
+				return render(request, 'home/edit.html', {"website_id": website_id, 'edit_form' : edit_form})
+		elif 'edit-delete' in request.POST:
+			website_id = request.POST.get("edit-delete")			
+			item = Website.objects.get(pk=website_id)
+			edit_form = WebsiteForm(request.POST, instance=item)
+			if edit_form.is_valid():
+				item.delete()
+	return redirect("/home")
