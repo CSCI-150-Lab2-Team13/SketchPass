@@ -7,7 +7,7 @@
 		<form method="POST" action="{% url 'add' %}">
 		    {% include 'mainApp/includes/formtemplate.html' with form=website_form %}
 		    <button class="btn btn-primary" >Save</button>
-
+			{% include 'mainApp/includes/pwgenmodal.html' %}
 		</form>
 	</div>
 
