@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>pwgen</title>
+    <link href="css/pwgentemp.css" rel="stylesheet" />
+</head>
+<body>
+    <script src="js/pwgen.js"></script>
+
+    <button id="myBtn">Generate password</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Password Generation Options</h3>
+
+            <label> uppercase letters </label>
+            <input type="checkbox" id='uppcase' name="uppercase checkbox" checked="checked" value="1">
+
+            <label> lowercase letters </label>
+            <input type="checkbox" id='lowcase' name="lowercase checkbox" checked="checked" value="1">
+
+            <label> numbers </label>
+            <input type="checkbox" id='numcase' name="numbercase checkbox" checked="checked" value="1">
+
+            <label> symbols </label>
+            <input type="checkbox" id='symcase' name="symbolcase checkbox" checked="checked" value="1">
+            <br>
+
+            <label>Password length (between 1 and 100 in length):</label>
+            <input type="number" id='strlength' name="string length" placeholder="input length here" min="1" max="100" step="1">
+            <br>
+
+            <input type="button" onclick="pwgeneration()" value="generate password" id="btnFinal">
+            <br>
+        </div>
+    </div>
+    <script>
+        var modal = document.getElementById('myModal');
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function () { modal.style.display = "block"; }
+        span.onclick = function () { modal.style.display = "none";}
+        window.onclick = function (event) { if (event.target == modal) { modal.style.display = "none";}}
+    </script>      
+</body >
+</html >
