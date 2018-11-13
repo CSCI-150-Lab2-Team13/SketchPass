@@ -20,6 +20,7 @@
       {%block javascript%}
         <script>
           function copyToClipboard(text, copy) {
+            //Need to create dummy div to use select function
             var dummy = $('<input>').val(text).appendTo('body').select()
             document.execCommand("copy");
             if (copy == 0){
