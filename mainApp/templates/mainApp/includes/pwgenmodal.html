@@ -3,14 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <title>pwgen</title>
-    <link href="css/pwgentemp.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
 </head>
 <body>
     <script src="js/pwgen.js"></script>
+
     <button id="myBtn">Generate password</button>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
+
+    <div id="myModal" class="pwmodal">
+        <div class="pwmodal-content">
+            <span class="pwclose">&times;</span>
+
             <h3>Password Generation Options</h3>
 
             <label> uppercase letters </label>
@@ -38,7 +41,8 @@
     <script>
         var modal = document.getElementById('myModal');
         var btn = document.getElementById("myBtn");
-        var span = document.getElementsByClassName("close")[0];
+        var span = document.getElementsByClassName("pwclose")[0];
+
         btn.onclick = function () { modal.style.display = "block"; }
         span.onclick = function () { modal.style.display = "none";}
         window.onclick = function (event) { if (event.target == modal) { modal.style.display = "none";}}
