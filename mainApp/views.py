@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.shortcuts import render, redirect
 from .forms import LoginForm
 from .forms import RegisterForm
@@ -13,15 +12,15 @@ def index(request):
 	login_form = LoginForm()
 	register_form = RegisterForm()
 
-	if request.method == 'POST':       
+	if request.method == 'POST':
 		if 'login-submit' in request.POST:
 			login_form = LoginForm(request.POST)
 			email = request.POST.get("email_login", None)
 			password = request.POST.get("password_login", None)
-			
+
 			if login_form.is_valid():
 				user = authenticate(email = email, password = password)
-				
+
 				if user is not None:
 				    login(request, user)
 				    if request.user.is_staff:
@@ -51,5 +50,3 @@ def index(request):
 		login_form = LoginForm()
 		register_form = RegisterForm()
 	return render(request, 'mainApp/index.html', {'login_form' : login_form, 'register_form':register_form, 'state':0})
-
-

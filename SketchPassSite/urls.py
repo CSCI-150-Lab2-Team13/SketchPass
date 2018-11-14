@@ -13,17 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-# Use include() to add paths from the catalog application 
+# Use include() to add paths from the catalog application
 
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include
+from home.views import (logout_view)
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^logout_view', logout_view, name = 'logout')
 ]
 
 
@@ -37,4 +39,3 @@ urlpatterns += [
 
 # Use static() to add url mapping to serve static files during development (only)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
