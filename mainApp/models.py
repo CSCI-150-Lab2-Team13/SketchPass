@@ -85,6 +85,8 @@ class Website(models.Model):
         ('SHOPPING', 'Shopping'),
         ('NEWS/REFERENCE', 'News/Reference'),
         ('MISCELLANEOUS','Miscellaneous'),
+        ('XXXX' , 'xxxx ayy ;)')
+
     )
     #id
     user_ID = models.ForeignKey(User, on_delete=models.CASCADE)

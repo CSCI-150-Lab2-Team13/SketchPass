@@ -2,7 +2,7 @@ from django import forms
 from mainApp.models import User
 from django.contrib.auth.hashers import make_password, check_password
 from django.core.validators import validate_email
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate
 
 class LoginForm(forms.Form):
 	email_login = forms.EmailField(label = "Email", required = True)
@@ -16,11 +16,11 @@ class LoginForm(forms.Form):
 			raise forms.ValidationError("Email is invalid!", code='invalid-login-email')
 
 		user = authenticate(email = email_login, password = password_login)
-
+				
 		if user is None:
 			raise forms.ValidationError("Either your email or password is incorrect!", code='invalid-login-auth')
 
-
+	
 class RegisterForm(forms.ModelForm):
 	email_register = forms.EmailField(label = "Email", required = True)
 	email_verify = forms.EmailField(label = "Verify Email", required = True)
@@ -55,12 +55,12 @@ class RegisterForm(forms.ModelForm):
 			usedNums.add(int(char))
 
 		if len(usedNums) < 2:
-			self.add_error(None, 'You must use 2 or more colors!')
+			self.add_error(None, 'You must use 2 or more colors!')	
 
 
 
 
-	def save(self, commit = True):
+	def save(self, commit = True):   
 		user = super(RegisterForm, self).save(commit = False)
    		user.email = self.cleaned_data.get('email_register')
    		user.password = make_password(self.cleaned_data['password_register'])

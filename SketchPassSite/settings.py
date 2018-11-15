@@ -136,6 +136,6 @@ LOGOUT_REDIRECT_URL =  'mainApp.index'
 
 AUTHENTICATION_BACKENDS = ('mainApp.backends.UserAuthBackend',)
 
-#Logout after browser close
+#Logout after browser close 
 #NOTE: DOES NOT APPLY IF OTHER TABS OPEN
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
