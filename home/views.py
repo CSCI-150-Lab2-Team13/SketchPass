@@ -42,10 +42,7 @@ def website_form(request):
     else:
         form = WebsiteForm()
 
-    args = {}
-    args['website_form'] = form
-
-    return render(request, 'home/website_form.html', args)
+    return render(request, 'home/website_form.html', {'website_form': form})
 
 @login_required
 def edit_website(request):
