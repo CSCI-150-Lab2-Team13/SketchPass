@@ -132,10 +132,10 @@ AUTH_USER_MODEL = 'mainApp.User'
 LOGIN_URL =  '/'
 
 #Pretty self explanatory
-LOGOUT_REDIRECT_URL =  'mainApp.index'
+LOGOUT_REDIRECT_URL =  '/'
 
 AUTHENTICATION_BACKENDS = ('mainApp.backends.UserAuthBackend',)
 
-#Logout after browser close 
+#Logout after browser close
 #NOTE: DOES NOT APPLY IF OTHER TABS OPEN
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
