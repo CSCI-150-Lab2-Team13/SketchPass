@@ -85,7 +85,6 @@ class Website(models.Model):
         ('SHOPPING', 'Shopping'),
         ('NEWS/REFERENCE', 'News/Reference'),
         ('MISCELLANEOUS','Miscellaneous'),
-        ('XXXX' , 'xxxx ayy ;)')
 
     )
     #id
