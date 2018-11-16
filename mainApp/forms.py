@@ -50,7 +50,7 @@ class RegisterForm(forms.ModelForm):
 
 		for char in password_register:
 			if int(char) > 8 or int(char) < 0:
-				self.add_error(None, 'Invalid Password')
+				self.add_error(None, 'Either your email or password is incorrect!"')
 				break
 			usedNums.add(int(char))
 
