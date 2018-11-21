@@ -20,9 +20,12 @@ function pwgeneration() {
             }
             for (var i = 0; i < size; i++) { final += use.charAt(Math.floor(Math.random() * use.length));
             }
-         return alert(final);    //final is the end string after pwgeneration has been executed
+         $('#password-input').val(final);
         }
     }
 };
 
-//console.log(pwgeneration());
+function submitpw(){
+    var pass = $('#password-input').val();
+    $('#id_password').val(pass);
+}
