@@ -1,0 +1,147 @@
+{% block content %}
+{% load widget_tweaks %}
+
+<!-- drawingbox.html --->
+<nav class="navbar navbar-expand-lg nav-index fixed-top" id="mainNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">Sketchpass</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+
+       <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#services">Security</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Why</a>
+            </li>
+        </ul>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Login/Register</button>
+</div>
+    
+</nav>
+
+
+
+
+
+
+
+<!--
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      </div>
+    </nav>
+--->
+
+
+
+
+
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id ="form-modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+	
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+	
+				<li class="nav-item">
+					<a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login-tab" aria-selected="true">	Login
+					</a>
+				</li>
+		  <li class="nav-item">
+		    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register-tab" aria-selected="false">Register
+		    </a>
+		  </li>
+		</ul>
+		<hr>
+		<div class="tab-content" id="myTabContent">
+			
+			<div class = "container-fluid" id="sketch-box">
+
+				  <div class="btn-group-vertical btn-group-toggle mouse-sizes" data-toggle="buttons">
+				  		  <label class="btn btn-dark size-box" for="option-lg">
+		    				<input type="radio" name="options-size" id="option-lg" autocomplete="off"> Lg
+						  </label>
+						  <label class="btn btn-dark size-box" for="option-md">
+						    <input type="radio" name="options-size" id="option-md" autocomplete="off"> Med
+						  </label>
+						  <label class="btn btn-dark active size-box" for="option-sm">
+						    <input type="radio" name="options-size" id="option-sm" autocomplete="off" checked> Sm
+						  </label>
+			  	 	</div>
+
+					<div id="sketch-holder"></div>
+					{% include "mainApp/includes/colorsbox.html" %}
+				</div>
+
+
+		  <hr>
+
+		  <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+			<div class ="container">
+				<form method="post" id="login-form">
+				 
+				  {% include 'mainApp/includes/formtemplate.html' with form=login_form %}
+
+				  <button type="submit" class="btn btn-primary" id = "login-submit" name = "login-submit">Submit</button>
+				</form>
+			</div>
+		  </div>
+
+		  <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+			<div class ="container">
+				<form method="post" id ="register-form">
+				 
+				  {% include 'mainApp/includes/formtemplate.html' with form=register_form %}
+
+				  <button type="submit" class="btn btn-primary" id = "register-submit" name = "register-submit">Submit</button>
+				</form>
+			</div>
+		  </div>
+
+		</div>
+		<br>
+    </div>
+  </div>
+</div>
+
+
+{% if state == 1 %}
+<script>
+	$( document ).ready(function() {
+
+		$('#form-modal').modal('show');
+		$ ('#login-tab').tab('show');
+		$('#form-modal').removeClass('fade');
+	});
+		   
+</script>
+
+{% elif state == 2 %}
+<script>
+	$( document ).ready(function() {
+
+		$('#form-modal').modal('show');
+		$ ('#register-tab').tab('show');
+		$('#form-modal').removeClass('fade');
+	});
+</script>
+
+{% endif %}
+
+
+
+
+
+{% endblock %}
