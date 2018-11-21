@@ -83,7 +83,7 @@ body{
 }
 
 .nav-index{
-	background-color: rgba(47, 54, 64,1.0);
+	background-color: rgba(53, 59, 72,1.0);
 }
 
 .card-container-custom{
@@ -100,4 +100,21 @@ body{
 }
 
 .nav-custom{
+}
+
+
+
+html, body, #heroimage{
+  width:100%;
+  height:100%;
+}
+
+#heroimage{   
+  background:url('../img/Slogo2.svg') center center;
+  background-color: white;
+  background-size:cover;
+}
+
+#stat1{
+	background: url('../img/stat1.png') center center;
 }
