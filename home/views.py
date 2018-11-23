@@ -56,7 +56,7 @@ def edit_website(request):
 			edit_form = WebsiteForm(instance=item)
 			return render(request, 'home/edit.html', {"website_id": website_id, 'edit_form' : edit_form})
 		elif 'edit-submit' in request.POST:
-			website_id = request.POST.get("edit-submit")			
+			website_id = request.POST.get("edit-submit")
 			item = Website.objects.get(pk=website_id)
 			edit_form = WebsiteForm(request.POST, instance=item)
 			if edit_form.is_valid():
@@ -65,7 +65,7 @@ def edit_website(request):
 				edit_form = WebsiteForm(instance=item)
 				return render(request, 'home/edit.html', {"website_id": website_id, 'edit_form' : edit_form})
 		elif 'edit-delete' in request.POST:
-			website_id = request.POST.get("edit-delete")			
+			website_id = request.POST.get("edit-delete")
 			item = Website.objects.get(pk=website_id)
 			edit_form = WebsiteForm(request.POST, instance=item)
 			if edit_form.is_valid():
