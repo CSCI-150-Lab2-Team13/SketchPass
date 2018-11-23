@@ -28,4 +28,4 @@ function pwgeneration() {
 function submitpw(){
     var pass = $('#password-input').val();
     $('#id_password').val(pass);
-}
+} 
