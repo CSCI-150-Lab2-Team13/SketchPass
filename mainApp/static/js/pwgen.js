@@ -13,7 +13,7 @@ function pwgeneration() {
     if (size > 100 || size < 1) { alert("Please enter a password length between 1 and 100");
     } 
     else {
-        if (uc + lc + nc + sc == 0) { alert("Please choose at least a single checkbox to assist in password generation");
+        if (uc + lc + nc + sc == 0) { alert("Please choose at least a single character type to assist in password generation");
         }
         else { 
             for (var i = 0; i <= 3; i++) { if (Choice[i] == 1) use += items[i];
@@ -28,4 +28,4 @@ function pwgeneration() {
 function submitpw(){
     var pass = $('#password-input').val();
     $('#id_password').val(pass);
-} 
+};
