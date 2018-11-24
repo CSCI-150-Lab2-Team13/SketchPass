@@ -4,7 +4,7 @@
     <div class="card text-white bg-dark mb-4 text-center" style="width: 18.5rem;">
       
       <div class="card-body">
-        <h5 class="card-title"> {{ name|slice:":22" }}{%if name|length > 2 %}...{% endif %}</h5>
+        <h5 class="card-title"> {{ name|slice:":22" }}{%if name|length > 22 %}...{% endif %}</h5>
         <h6 class="card-subtitle mb-2 text-muted"> {{ category }}</h6>
         <p class="card-text">{{ desc|slice:":35" }}{%if desc|length > 35 %}...{% endif %}
         </p>
