@@ -8,7 +8,9 @@ from django.shortcuts import redirect
 # Create your views here.
 from django.http import HttpResponse
 from mainApp.models import User, Website
+from mainApp import views
 from .forms import WebsiteForm
+
 
 @login_required
 def index(request):
@@ -68,3 +70,8 @@ def edit_website(request):
 			if edit_form.is_valid():
 				item.delete()
 	return redirect("/home")
+
+@login_required
+def logout_view(request):
+	logout(request)
+	return redirect(views.index)
