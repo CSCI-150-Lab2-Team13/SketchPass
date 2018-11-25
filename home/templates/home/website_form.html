@@ -6,9 +6,9 @@
 	<div class = "container card-container-custom">
 		<form method="POST" action="{% url 'add' %}">
 		    {% include 'mainApp/includes/formtemplate.html' with form=website_form %}
-		    <button class="btn btn-primary" >Save</button>
+			<button class="btn btn-primary" >Save</button>
+			{% include 'home/pwgenmodal.html' %}
 				 <button onclick="window.history.back();"," class="btn btn-primary" >Cancel</button>
-
 		</form>
 	</div>
 

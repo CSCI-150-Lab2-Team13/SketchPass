@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>pwgen</title>
+</head>
+<body>
+<script src="js/pwgen.js"></script>
+
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#pwgenmodal">Generate a password here!</button>
+
+    <div class="modal fade" id='pwgenmodal' tabindex="-1" aria-labelledby="pwgenmodallabel" aria-hidden="true">
+        <div class="modal-dialog" >
+            <div class="modal-content text-center">
+
+                <div class="modal-header">
+                    <h4 class="modal-title" id="ModalLabel">Password Generation Options</h4>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
+
+                <div class="text-center">
+                    <label>All character types chosen by default. Uncheck a option if it is not desired in the password generation</label>
+                </div>
+
+                <div class="btn-group-toggle" data-toggle="cbuttons">
+                        <label class="btn btn-dark btn-lg active">
+                          <input type="checkbox" checked autocomplete="on" data-target="Ubutton" id='uppcase' value="1">  Uppercase Letters - From capital A to Z 
+                        </label>
+                        <br><br>
+                </div>
+
+                <div class="btn-group-toggle" data-toggle="cbuttons">
+                        <label class="btn btn-dark btn-lg active">
+                          <input type="checkbox" checked autocomplete="on" id='lowcase' value="1"> Lowercase Letters - From lowercase a to z
+                        </label>
+                        <br><br>
+                </div>
+
+                <div class="btn-group-toggle" data-toggle="cbuttons">
+                        <label class="btn btn-dark btn-lg active">
+                          <input type="checkbox" checked autocomplete="on" id='numcase' value="1"> Numbers - From 0 to 9
+                        </label>
+                        <br><br>
+                </div>
+
+                <div class="btn-group-toggle" data-toggle="cbuttons">
+                        <label class="btn btn-dark btn-lg active">
+                          <input type="checkbox" checked autocomplete="on" id='symcase' value="1"> Symbols - Keyboard Standard (ex: `~!*&>])
+                        </label>
+                        <br><br>
+                </div>
+                
+            <div class="form-row">
+                <div class="col">
+                     <label>Enter desired password length (between 1 and 100 in length):</label>
+                     <input type="number" id='strlength' name="string length" placeholder="length" min="1" max="100" step="1">
+                     <br><br>
+                </div>
+            </div>
+
+                <div class="col-auto">
+                    <label>Current generated password</label>
+                    <input class="form-control" type="text" placeholder="Current Password" id ="password-input">
+                </div>  
+            
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning"  onclick="pwgeneration()" value="generate password" id='genpassword' >Generate Password</button>
+                    <button type="button" class="btn btn-primary"  onclick=" submitpw()" value="generate password" id='pwgenoutput' >Use This Password</button>
+                    <br>
+                </div>
+
+            </div>
+        </div>
+     <script>
+         $('#pwgenoutput').click(function() {
+          $('#pwgenmodal').modal('hide');
+         });
+    </script>
+    </div>
+</body >
+</html >
