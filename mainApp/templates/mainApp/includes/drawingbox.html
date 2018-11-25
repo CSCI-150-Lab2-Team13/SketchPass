@@ -1,24 +1,50 @@
 {% block content %}
 {% load widget_tweaks %}
 
-
-
-
-
-<nav class="navbar navbar-expand-lg nav-index">
-  <a class="navbar-brand" href="#">Sketchpass</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<!-- drawingbox.html --->
+<nav class="navbar navbar-expand-lg nav-index fixed-top" id="mainNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">Sketchpass</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  
+  <div class="collapse navbar-collapse" id="navbarResponsive">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-    <ul class="navbar-nav mr-auto">
-    </ul>
-
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Login/Register</button>
-  	</div>
+       <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#services">Security</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Why</a>
+            </li>
+        </ul>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Login/Register</button>
+</div>
+    
 </nav>
+
+
+
+
+
+
+
+<!--
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      </div>
+    </nav>
+--->
+
+
+
 
 
 

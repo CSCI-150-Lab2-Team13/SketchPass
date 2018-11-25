@@ -54,7 +54,7 @@ class User(AbstractUser):
     # User DB
     # user_id = #models.
     # email
-    # image_password = 
+    # image_password =
 
 
     #passwordDB
@@ -70,12 +70,23 @@ class User(AbstractUser):
     #	desc
     # 	email/username
     #	category
-    #	
+    #
     #	Website Password
     # 	Array of Categories
 
 
 class Website(models.Model):
+    PASSWORD_CHOICES = (
+        ('BUSINESS', 'Business'),
+        ('EDUCATION', 'Education'),
+        ('ENTERTAINMENT', 'Entertainment'),
+        ('FINANCE', 'Finance'),
+        ('SOCIAL','Social'),
+        ('SHOPPING', 'Shopping'),
+        ('NEWS/REFERENCE', 'News/Reference'),
+        ('MISCELLANEOUS','Miscellaneous'),
+
+    )
     #id
     user_ID = models.ForeignKey(User, on_delete=models.CASCADE)
     #django automatically creates autoincrementing id website_ID = models.CharField(max_length=20)
@@ -83,7 +94,7 @@ class Website(models.Model):
     urlNAME = models.CharField(max_length=100)
     websiteName = models.CharField(max_length=30)
     desc = models.CharField(max_length=250)
-    category = models.CharField(max_length=20)
+    category = models.CharField(max_length= 30,choices=PASSWORD_CHOICES)
     username = models.CharField(max_length=100)
 
     def __str__(self):

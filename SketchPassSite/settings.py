@@ -9,6 +9,14 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
+from .email_info import *
+EMAIL_USE_TLS = EMAIL_USE_TLS
+EMAIL_HOST = EMAIL_HOST
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+EMAIL_PORT = EMAIL_PORT
+
+
 
 import os
 
@@ -132,10 +140,10 @@ AUTH_USER_MODEL = 'mainApp.User'
 LOGIN_URL =  '/'
 
 #Pretty self explanatory
-LOGOUT_REDIRECT_URL =  'mainApp.index'
+LOGOUT_REDIRECT_URL =  '/'
 
 AUTHENTICATION_BACKENDS = ('mainApp.backends.UserAuthBackend',)
 
-#Logout after browser close 
+#Logout after browser close
 #NOTE: DOES NOT APPLY IF OTHER TABS OPEN
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
