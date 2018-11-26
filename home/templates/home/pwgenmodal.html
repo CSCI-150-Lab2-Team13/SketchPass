@@ -5,7 +5,6 @@
     <title>pwgen</title>
 </head>
 <body>
-<script src="js/pwgen.js"></script>
 
 <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#pwgenmodal">Generate a password here!</button>
 
@@ -22,32 +21,28 @@
                     <label>All character types chosen by default. Uncheck a option if it is not desired in the password generation</label>
                 </div>
 
-                <div class="btn-group-toggle" data-toggle="cbuttons">
-                        <label class="btn btn-dark btn-lg active">
+                <div class="btn-group-toggle">
+
+                        <label class="btn-dark btn-lg active">
                           <input type="checkbox" checked autocomplete="on" data-target="Ubutton" id='uppcase' value="1">  Uppercase Letters - From capital A to Z 
                         </label>
                         <br><br>
-                </div>
 
-                <div class="btn-group-toggle" data-toggle="cbuttons">
-                        <label class="btn btn-dark btn-lg active">
+                        <label class="btn-dark btn-lg active">
                           <input type="checkbox" checked autocomplete="on" id='lowcase' value="1"> Lowercase Letters - From lowercase a to z
                         </label>
                         <br><br>
-                </div>
 
-                <div class="btn-group-toggle" data-toggle="cbuttons">
-                        <label class="btn btn-dark btn-lg active">
+                        <label class="btn-dark btn-lg active">
                           <input type="checkbox" checked autocomplete="on" id='numcase' value="1"> Numbers - From 0 to 9
                         </label>
                         <br><br>
-                </div>
 
-                <div class="btn-group-toggle" data-toggle="cbuttons">
-                        <label class="btn btn-dark btn-lg active">
+                        <label class="btn-dark btn-lg active">
                           <input type="checkbox" checked autocomplete="on" id='symcase' value="1"> Symbols - Keyboard Standard (ex: `~!*&>])
                         </label>
                         <br><br>
+
                 </div>
                 
             <div class="form-row">
@@ -68,7 +63,6 @@
                     <button type="button" class="btn btn-primary"  onclick=" submitpw()" value="generate password" id='pwgenoutput' >Use This Password</button>
                     <br>
                 </div>
-
             </div>
         </div>
      <script>
