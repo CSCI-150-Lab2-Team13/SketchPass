@@ -10,7 +10,7 @@ function pwgeneration() {
     var sc = document.getElementById('symcase').checked;
     var items = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz", "0123456789", " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]; //no " due to string syntax issue in js
     var Choice = [uc, lc, nc, sc];
-    if (size > 100 || size < 1) { alert("Please enter a password length between 1 and 100");
+    if (size > 100 || size < 1) { alert("Please enter a password length between 1 and 100 charaters");
     } 
     else {
         if (uc + lc + nc + sc == 0) { alert("Please choose at least a single character type to assist in password generation");
@@ -27,5 +27,8 @@ function pwgeneration() {
 
 function submitpw(){
     var pass = $('#password-input').val();
+    if(pass.length > 100){ alert("The password created and modified is over 100 charaters in length and will be reduced to 100 characters automatcally starting from the end of the password.");
+        pass = pass.substring(0,100);
+    }
     $('#id_password').val(pass);
 };
