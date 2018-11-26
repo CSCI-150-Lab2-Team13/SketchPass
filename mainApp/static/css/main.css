@@ -89,6 +89,38 @@ body{
 	background-color: rgba(47, 54, 64,1.0);
 }
 
+.header-blue{
+	background-color: rgba(74,0,101);
+}
+
+.header-feat{
+	background-color: #77C9D4
+}
+
+.header-marine{
+	background-color: #57BC90
+}
+
+.header-forest{
+	background-color: #015249
+}
+
+.header-grey{
+	background-color: #A5A5AF
+}
+
+.header-lav{
+	background-color: #6C648B
+}
+
+.header-storm{
+	background-color: #494E6B
+}
+
+.header-evening{
+	background-color: #192231
+}
+
 .card-container-custom{
 	background-color: #f5f6fa; 
 	border-bottom-left-radius: 3%;
@@ -135,4 +167,55 @@ body{
 	position: absolute;
 	bottom: 2%;
 	right: 28%;
+}
+
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+/* Container holding the image and the text */
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+/* Bottom left text */
+.bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+}
+
+/* Top left text */
+.top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+/* Top right text */
+.top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
