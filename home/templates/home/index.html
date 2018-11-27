@@ -19,21 +19,8 @@
 
 </nav>
 
-{% for message in messages %}
-  <div class="alert {{ message.tags }} alert-dismissible" id=an-alert role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    {{ message }}
-  </div>
+{% include "mainApp/includes/messages.html" %}
 
-  <script>
-      $("#an-alert").hide();
-        $("#an-alert").fadeTo(2000, 500).slideUp(500, function(){
-          $("#an-alert").slideUp(500);
-            });
-  </script>
-{% endfor %}
 
 <div class="container">
 <br>
