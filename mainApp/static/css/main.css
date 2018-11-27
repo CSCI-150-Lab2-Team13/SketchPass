@@ -89,6 +89,38 @@ body{
 	background-color: rgba(47, 54, 64,1.0);
 }
 
+.header-blue{
+	background-color: rgba(74,0,101);
+}
+
+.header-feat{
+	background-color: #77C9D4
+}
+
+.header-marine{
+	background-color: #57BC90
+}
+
+.header-forest{
+	background-color: #015249
+}
+
+.header-grey{
+	background-color: #A5A5AF
+}
+
+.header-lav{
+	background-color: #6C648B
+}
+
+.header-storm{
+	background-color: #494E6B
+}
+
+.header-evening{
+	background-color: #192231
+}
+
 .card-container-custom{
 	background-color: #f5f6fa; 
 	border-bottom-left-radius: 3%;
@@ -136,3 +168,11 @@ body{
 	bottom: 2%;
 	right: 28%;
 }
+
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
