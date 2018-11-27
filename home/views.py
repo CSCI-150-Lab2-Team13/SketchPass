@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 #from django.db.models.functions import Lower
+from django.contrib import messages
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 # Create your views here.
@@ -39,6 +40,7 @@ def website_form(request):
             site = form.save(False)
             site.user_ID = request.user
             site.save()
+            messages.add_message(request, messages.SUCCESS, 'Succesfully added website.')
             return redirect("/home")
 
     else:
@@ -60,6 +62,7 @@ def edit_website(request):
 			edit_form = WebsiteForm(request.POST, instance=item)
 			if edit_form.is_valid():
 				edit_form.save()
+				messages.add_message(request, messages.SUCCESS, 'Succesfully edited website.')
 			else:
 				edit_form = WebsiteForm(instance=item)
 				return render(request, 'home/edit.html', {"website_id": website_id, 'edit_form' : edit_form})
@@ -69,6 +72,7 @@ def edit_website(request):
 			edit_form = WebsiteForm(request.POST, instance=item)
 			if edit_form.is_valid():
 				item.delete()
+				messages.add_message(request, messages.INFO, 'Succesfully deleted website.')
 	return redirect("/home")
 
 @login_required
