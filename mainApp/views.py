@@ -1,15 +1,24 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model, login, update_session_auth_hash
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_bytes, force_text
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.conf import settings
 from django.contrib.auth import authenticate, login
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .forms import LoginForm
 from .forms import RegisterForm
+from .tokens import account_activation_token
 from mainApp.models import User
+from django import forms
 
 # Create your views here.
 def index(request):
@@ -38,25 +47,45 @@ def index(request):
 			register_form = RegisterForm(request.POST)
 			email = request.POST.get("email_register", None)
 			password = request.POST.get("password_register", None)
+			form = RegisterForm(request.POST)
 
-			if register_form.is_valid():
-				register_form.save()
-				user = authenticate(email = email, password = password)
-				subject = 'SketchPass'
-				message = 'Thank you for signing up to SketchPass '
-				from_email = settings.EMAIL_HOST_USER
-				to_list = [user.email]
-				send_mail (subject,message,from_email,to_list,fail_silently=True)
-				send_mail (subject,message,from_email,to_list,fail_silently=True)
-				if user is not None: #error checking to make sure inserted correctly
-					login(request, user)
-					if request.user.is_staff:
-						return redirect('/admin/')
-					else:
-						return redirect("home/")
+			if form.is_valid():
+				#create inactive user with no password
+				##user = authenticate(email = email, password = password)
+				user =register_form.save(commit = False)
+				user.is_active = False
+				user.save()
+				#send email to user with token
+				mail_subject = 'Welcome to SketchPass'
+				current_site = get_current_site (request)
+				message = render_to_string ('activate_email.html',{
+				'user':user,
+				'domain':current_site.domain,
+				'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+				'token': account_activation_token.make_token(user),
+				})
+				to_email = form.cleaned_data.get('email_register')
+				email = EmailMessage(mail_subject, message, to=[to_email])
+				email.send()
+				return HttpResponse('Please confirm your email address to complete the registration')
 			else:
 				return render(request, 'mainApp/index.html', {'login_form' : login_form, 'register_form':register_form, 'state':2})
 	else:
 		login_form = LoginForm()
 		register_form = RegisterForm()
 	return render(request, 'mainApp/index.html', {'login_form' : login_form, 'register_form':register_form, 'state':0})
+
+def activate (request,uidb64,token):
+	try:
+		uid = force_text(urlsafe_base64_decode(uidb64))
+		user = User.objects.get(pk=uid)
+	except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+		user = None
+	if user is not None and account_activation_token.check_token(user, token):
+		user.is_active = True
+		user.save()
+		login(request, user)
+		# return redirect('home')
+		return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+	else:
+		 return HttpResponse('Activation link is invalid!')
