@@ -40,7 +40,7 @@ def website_form(request):
             site = form.save(False)
             site.user_ID = request.user
             site.save()
-            messages.add_message(request, messages.SUCCESS, 'Succesfully added website.')
+            messages.add_message(request, messages.SUCCESS, 'Successfully added website.')
             return redirect("/home")
 
     else:
@@ -62,7 +62,7 @@ def edit_website(request):
             edit_form = WebsiteForm(request.POST, instance=item)
             if edit_form.is_valid():
                 edit_form.save()
-                messages.add_message(request, messages.SUCCESS, 'Succesfully edited website.')
+                messages.add_message(request, messages.SUCCESS, 'Successfully edited website.')
             else:
                 edit_form = WebsiteForm(instance=item)
                 return render(request, 'home/edit.html', {"website_id": website_id, 'edit_form' : edit_form})
@@ -72,11 +72,11 @@ def edit_website(request):
             edit_form = WebsiteForm(request.POST, instance=item)
             if edit_form.is_valid():
                 item.delete()
-                messages.add_message(request, messages.INFO, 'Succesfully deleted website.')
+                messages.add_message(request, messages.INFO, 'Successfully deleted website.')
     return redirect("/home")
 
 @login_required
 def logout_view(request):
     logout(request)
-    messages.add_message(request, messages.SUCCESS, 'Succesfully logged out.')
+    messages.add_message(request, messages.SUCCESS, 'Successfully logged out.')
     return redirect(views.index)
