@@ -91,9 +91,9 @@ class Website(models.Model):
     user_ID = models.ForeignKey(User, on_delete=models.CASCADE)
     #django automatically creates autoincrementing id website_ID = models.CharField(max_length=20)
     password = models.CharField(help_text='Enter field documentation', max_length = 100)
-    urlNAME = models.CharField(max_length=100)
+    urlNAME = models.CharField(max_length=100,blank=True, default='')
     websiteName = models.CharField(max_length=30)
-    desc = models.CharField(max_length=250)
+    desc = models.CharField(max_length=250,blank=True, default='')
     category = models.CharField(max_length= 30,choices=PASSWORD_CHOICES)
     username = models.CharField(max_length=100)
 
