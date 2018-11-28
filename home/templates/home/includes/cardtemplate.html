@@ -1,14 +1,13 @@
-
 <div class ="">
   <div class="col-md-6 col-lg-4 col-xl-3">
-    <div class="card text-white bg-dark mb-4 text-center" style="width: 18.5rem;">
+    <div class="card text-white bg-dark mb-4 text-center" style="width: 14rem;">
       
       <div class="card-body">
         <h5 class="card-title"> {{ name|slice:":12" }}{%if name|length > 12 %}...{% endif %}</h5>
         <h6 class="card-subtitle mb-2 text-muted"> {{ category }}</h6>
-        <p class="card-text">{{ desc|slice:":35" }}{%if desc|length > 35 %}...{% endif %}
+        <p class="card-text">{{ desc|slice:":15" }}{%if desc|length > 15 %}...{% endif %}
         </p>
-        <a href="http://{{ url }}" class="card-link">{{ url|slice:":35" }}{%if url|length > 35 %}...{% endif %}</a>
+        <a href="http://{{ url }}" class="card-link">{{ url|slice:":15" }}{%if url|length > 15 %}...{% endif %}</a>
         <hr>
       </div>
       <form method="POST" action="{% url 'edit_website' %}">
@@ -19,25 +18,22 @@
       </form>
       {%block javascript%}
         <script>
-          function copyToClipboard(text, copy) {
+          function copyToClipboard(text) {
             //Need to create dummy div to use select function
             var dummy = $('<input>').val(text).appendTo('body').select()
             document.execCommand("copy");
-            if (copy == 0){
-              alert("Copied Password!");
-            }
-            else if(copy == 1){
-              alert("Copied Username!");
-            }
           }
         </script>
       {% endblock %}
-      <button class = "btn btn-sm copy-password-button" type="submit" value="{{ website_id }}" style="text-align: center center" name="edit-form"  onclick="copyToClipboard('{{ website.password }}', 0)">
-        <i class="fas fa-unlock-alt"></i>
-      </button>
-      <button class = "btn btn-sm copy-username-button" type="submit" value="{{ website_id }}" style="text-align: center center" name="edit-form" onclick="copyToClipboard('{{ website.username }}', 1)">
-        <i class="fas fa-user"></i>
-      </button>
+      <form id="copy-form" name="copy-form" method="POST" action="">
+        {% csrf_token %}
+        <button class = "btn btn-sm copy-password-button" type="submit" value="Successfully Copied Password!" style="text-align: center center" name="copy-password"  onclick="copyToClipboard('{{ website.password }}')">
+          <i class="fas fa-unlock-alt"></i>
+        </button>
+        <button class = "btn btn-sm copy-username-button" type="submit" value="Successfully Copied Username!" style="text-align: center center" name="copy-username" onclick="copyToClipboard('{{ website.username }}')">
+          <i class="fas fa-user"></i>
+        </button>
+      </form>
     </div>
   </div>
 

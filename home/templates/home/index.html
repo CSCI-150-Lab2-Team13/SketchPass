@@ -41,7 +41,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button class="btn btn-success">Sort By</button>
           </a>
 
-          <form id="sort-form" method="POST" action="">
+          <form id="sort-form" name="sort-form" method="POST" action="">
             {% csrf_token %}
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <button class="dropdown-item" id="a-z" type="submit" name="a-z">Sort (A-Z)</button>
@@ -72,7 +72,7 @@
 
 <!-- Middle Cards --->
 
-  <div class="container-fluid card-columns text-center card-container-custom card-deck " id="website-card-deck">
+  <div class="container-fluid card-columns text-center card-container-custom card-deck" id="website-card-deck">
 
     {% if websites %}
 

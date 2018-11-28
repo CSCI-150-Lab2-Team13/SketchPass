@@ -76,7 +76,7 @@ class User(AbstractUser):
 
 
 class Website(models.Model):
-    PASSWORD_CHOICES = (
+    CATEGORY_CHOICES = (
         ('BUSINESS', 'Business'),
         ('EDUCATION', 'Education'),
         ('ENTERTAINMENT', 'Entertainment'),
@@ -94,7 +94,7 @@ class Website(models.Model):
     urlNAME = models.CharField(max_length=100,blank=True, default='')
     websiteName = models.CharField(max_length=30)
     desc = models.CharField(max_length=250,blank=True, default='')
-    category = models.CharField(max_length= 30,choices=PASSWORD_CHOICES)
+    category = models.CharField(max_length= 30,choices=CATEGORY_CHOICES)
     username = models.CharField(max_length=100)
 
     def __str__(self):

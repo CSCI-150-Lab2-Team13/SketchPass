@@ -24,7 +24,13 @@ def index(request):
         elif 'category' in request.POST:
             state = 2
         #elif 'created' in request.POST:
-        #	state = 3
+        #   state = 3
+        if 'copy-password' in request.POST:
+            messages.add_message(request, messages.SUCCESS, request.POST.get("copy-password"))
+
+        elif 'copy-username'in request.POST:
+            #request.POST.get("copy-username")
+            messages.add_message(request, messages.SUCCESS, request.POST.get("copy-username"))
     if request.method == 'GET':
         if "search" in request.GET:
             query = request.GET.get("query", "")
