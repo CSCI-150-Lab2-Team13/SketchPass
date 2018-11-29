@@ -42,10 +42,14 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'mainApp',
     'home',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'widget_tweaks',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -74,14 +78,22 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
 ]
 
+
 WSGI_APPLICATION = 'SketchPassSite.wsgi.application'
+ACCOUNT_SIGNUP_FORM_CLASS = 'mainApp.forms.RegisterForm'
 
+AUTHENTICATION_BACKENDS = (
+    'mainApp.backends.UserAuthBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 
+    )
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -118,7 +130,21 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+SITE_ID = 1
 
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
+
+TEMPLATE_DIRS = (
+os.path.join(BASE_DIR,'templates'), os.path.join(BASE_DIR,'templates', 'allauth'))
+#login settings/ email confirmation settings
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -151,7 +177,7 @@ LOGIN_URL =  '/'
 #Pretty self explanatory
 LOGOUT_REDIRECT_URL =  '/'
 
-AUTHENTICATION_BACKENDS = ('mainApp.backends.UserAuthBackend',)
+
 
 #Logout after browser close
 #NOTE: DOES NOT APPLY IF OTHER TABS OPEN
