@@ -34,7 +34,7 @@ def index(request):
 			if login_form.is_valid():
 				user = authenticate(email = email, password = password)
 
-				if user is not None:
+				if user is not None and user.is_active:
 				    login(request, user)
 				    if request.user.is_staff:
 			       		return redirect('/admin/')
@@ -56,18 +56,18 @@ def index(request):
 				user.is_active = False
 				user.save()
 				#send email to user with token
-				mail_subject = 'Welcome to SketchPass'
 				current_site = get_current_site (request)
+				mail_subject = 'Welcome to SketchPass'
 				message = render_to_string ('activate_email.html',{
 				'user':user,
 				'domain':current_site.domain,
-				'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+				'uid': urlsafe_base64_encode(force_bytes(user.pk).decode()),
 				'token': account_activation_token.make_token(user),
 				})
 				to_email = form.cleaned_data.get('email_register')
 				email = EmailMessage(mail_subject, message, to=[to_email])
 				email.send()
-				return HttpResponse('Please confirm your email address to complete the registration')
+				return HttpResponse('Please confirm your email address to complete the registration You will not be able to login until you do')
 			else:
 				return render(request, 'mainApp/index.html', {'login_form' : login_form, 'register_form':register_form, 'state':2})
 	else:

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -79,9 +80,14 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'SketchPassSite.wsgi.application'
 
+AUTHENTICATION_BACKENDS = (
+    'mainApp.backends.UserAuthBackend',
+    'django.contrib.auth.backends.ModelBackend',
 
+    )
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -118,6 +124,9 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+SITE_ID = 1
+
+
 
 
 # Internationalization
@@ -151,7 +160,7 @@ LOGIN_URL =  '/'
 #Pretty self explanatory
 LOGOUT_REDIRECT_URL =  '/'
 
-AUTHENTICATION_BACKENDS = ('mainApp.backends.UserAuthBackend',)
+
 
 #Logout after browser close
 #NOTE: DOES NOT APPLY IF OTHER TABS OPEN
