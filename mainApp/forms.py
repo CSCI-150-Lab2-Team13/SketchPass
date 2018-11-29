@@ -3,7 +3,7 @@ from mainApp.models import User
 from django.contrib.auth.hashers import make_password, check_password
 from django.core.validators import validate_email
 from django.contrib.auth import authenticate
-from allauth.account.forms import LoginForm
+
 
 class LoginForm(forms.Form):
 	email_login = forms.EmailField(label = "Email", required = True)

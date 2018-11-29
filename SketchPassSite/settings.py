@@ -42,9 +42,6 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'mainApp',
     'home',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
     'widget_tweaks',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -78,7 +75,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request',
             ],
         },
     },
@@ -86,12 +82,10 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'SketchPassSite.wsgi.application'
-ACCOUNT_SIGNUP_FORM_CLASS = 'mainApp.forms.RegisterForm'
 
 AUTHENTICATION_BACKENDS = (
     'mainApp.backends.UserAuthBackend',
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
 
     )
 # Database
@@ -133,18 +127,7 @@ MESSAGE_TAGS = {
 SITE_ID = 1
 
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
 
-TEMPLATE_DIRS = (
-os.path.join(BASE_DIR,'templates'), os.path.join(BASE_DIR,'templates', 'allauth'))
-#login settings/ email confirmation settings
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
