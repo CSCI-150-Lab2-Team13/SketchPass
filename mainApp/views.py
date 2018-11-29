@@ -58,7 +58,7 @@ def index(request):
 				#send email to user with token
 				current_site = get_current_site (request)
 				mail_subject = 'Welcome to SketchPass'
-				message = render_to_string ('activate_email.html',{
+				message = render_to_string ('mainApp/activate_email.html',{
 				'user':user,
 				'domain':current_site.domain,
 				'uid': urlsafe_base64_encode(force_bytes(user.pk).decode()),

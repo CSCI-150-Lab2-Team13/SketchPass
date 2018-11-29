@@ -160,7 +160,7 @@ LOGIN_URL =  '/'
 #Pretty self explanatory
 LOGOUT_REDIRECT_URL =  '/'
 
-
+AUTHENTICATION_BACKENDS = ('mainApp.backends.UserAuthBackend',)
 
 #Logout after browser close
 #NOTE: DOES NOT APPLY IF OTHER TABS OPEN
