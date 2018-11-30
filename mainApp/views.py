@@ -70,6 +70,13 @@ def index(request):
 				return HttpResponse('Please confirm your email address to complete the registration You will not be able to login until you do')
 			else:
 				return render(request, 'mainApp/index.html', {'login_form' : login_form, 'register_form':register_form, 'state':2})
+		elif 'password-reset' in request.POST:
+			reset_password_form = ResetPasswordForm(request.POST)
+			email = request.POST.get("user_email", None)
+			form = ResetPasswordForm(request.POST)
+			if form.is_valid():
+				pass
+			else: pass
 	else:
 		login_form = LoginForm()
 		register_form = RegisterForm()
@@ -84,8 +91,8 @@ def activate (request,uidb64,token):
 	if user is not None and account_activation_token.check_token(user, token):
 		user.is_active = True
 		user.save()
-		login(request, user)
-		# return redirect('home')
+		login(request, user,backend='django.contrib.auth.backends.ModelBackend')
 		return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+		return redirect('mainApp/index.html')
 	else:
 		 return HttpResponse('Activation link is invalid!')

@@ -77,14 +77,14 @@ class User(AbstractUser):
 
 class Website(models.Model):
     PASSWORD_CHOICES = (
-        ('BUSINESS', 'Business'),
-        ('EDUCATION', 'Education'),
-        ('ENTERTAINMENT', 'Entertainment'),
-        ('FINANCE', 'Finance'),
-        ('SOCIAL','Social'),
-        ('SHOPPING', 'Shopping'),
-        ('NEWS/REFERENCE', 'News/Reference'),
-        ('MISCELLANEOUS','Miscellaneous'),
+        ('Business', 'Business'),
+        ('Education', 'Education'),
+        ('Entertainment', 'Entertainment'),
+        ('Finance', 'Finance'),
+        ('Social','Social'),
+        ('Shopping', 'Shopping'),
+        ('News/Reference', 'News/Reference'),
+        ('Miscellaneous','Miscellaneous'),
 
     )
     #id

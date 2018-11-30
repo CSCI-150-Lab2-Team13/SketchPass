@@ -1,0 +1,56 @@
+{% block content %}
+{% load widget_tweaks %}
+
+
+
+
+
+
+
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+
+		<hr>
+		<div class="tab-content" id="myTabContent">
+
+			<div class = "container-fluid" id="sketch-box">
+
+				  <div class="btn-group-vertical btn-group-toggle mouse-sizes" data-toggle="buttons">
+				  		  <label class="btn btn-dark size-box" for="option-lg">
+		    				<input type="radio" name="options-size" id="option-lg" autocomplete="off"> Lg
+						  </label>
+						  <label class="btn btn-dark size-box" for="option-md">
+						    <input type="radio" name="options-size" id="option-md" autocomplete="off"> Med
+						  </label>
+						  <label class="btn btn-dark active size-box" for="option-sm">
+						    <input type="radio" name="options-size" id="option-sm" autocomplete="off" checked> Sm
+						  </label>
+			  	 	</div>
+
+					<div id="sketch-holder"></div>
+					{% include "mainApp/includes/colorsbox.html" %}
+				</div>
+
+
+		  <hr>
+
+		  <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+			<div class ="container">
+				<form method="post" id="reset-form">
+
+				  {% include 'mainApp/includes/formtemplate.html' with form=reset_form %}
+
+				  <button type="submit" class="btn btn-primary" id = "reset-submit" name = "reset-submit">Submit</button>
+
+
+      	</form>
+    	</div>
+		  </div>
+
+
+
+
+
+
+{% endblock %}

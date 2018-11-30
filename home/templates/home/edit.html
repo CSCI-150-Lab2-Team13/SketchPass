@@ -3,10 +3,10 @@
 <br>
 <div class ="container" style="position: relative;">
 	 <h5 class="passwords-header-h5 text-center p-3 bg-dark text-white">Edit Website</h5>
-	<div class = "container card-container-custom">	
+	<div class = "container card-container-custom">
 		<form method="POST" action="{% url 'edit_website' %}">
 			{% include 'home/includes/websiteformtemplate.html' with form=edit_form %}
-		    <button class="btn btn-primary"  type="submit" value= "{{ website_id }}" name="edit-submit">Save</button>	  
+		    <button class="btn btn-primary"  type="submit" value= "{{ website_id }}" name="edit-submit">Save</button>
 		<button type="button" class="btn btn-danger delete-button" data-toggle="modal" data-target="#delete-modal"><i class="far fa-trash-alt"></i></button>
 	</div>
 
@@ -25,10 +25,10 @@
         	<p>Your information will become permanently deleted and will <strong style="">NOT</strong> be able to be recovered!</p>
       	</div>
    		<div class="modal-footer">
-   			<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> 
-				
+   			<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
         		<button class = "btn btn-danger" type="submit" value="{{ website_id }}" style="text-align: center center" name="edit-delete"><i class="far fa-trash-alt"></i></button>
-        	
+
         	</form>
       	</div>
 

@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^add/', views.website_form, name = 'add'),
     url(r'^edit/', views.edit_website, name='edit_website'),
     url(r'^logout/', views.logout_view, name='logout_view'),
+
 ]

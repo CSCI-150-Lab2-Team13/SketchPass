@@ -1,6 +1,7 @@
 from django import forms
 from mainApp.models import Website
 from mainApp.models import User
+from mainApp.models import UserManager
 
 class WebsiteForm(forms.ModelForm):
     class Meta:
@@ -14,7 +15,7 @@ class WebsiteForm(forms.ModelForm):
                 'password' )
 
         labels = {
-        	"urlNAME": "Url",
+        	'urlNAME': "Url",
             'websiteName': "Website",
        		'desc': "Description",
        		'category': "Category",

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 #from django.db.models.functions import Lower
@@ -8,7 +9,7 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 # Create your views here.
 from django.http import HttpResponse
-from mainApp.models import User, Website
+from mainApp.models import User, Website, UserManager
 from mainApp import views
 from .forms import WebsiteForm
 
