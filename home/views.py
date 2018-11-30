@@ -82,6 +82,23 @@ def edit_website(request):
     return redirect("/home")
 
 @login_required
+def options_view(request):
+    if request.method == 'POST':
+        if 'delete-all' in request.POST:
+                user = User.objects.get(id=request.user.id)
+                user.website_set.all().delete()
+                messages.add_message(request, messages.INFO, 'Successfully deleted all websites.')
+                return redirect("/home")
+
+    user = User.objects.get(id=request.user.id)
+    websites = user.website_set.all()
+    context = {
+        "user": user,
+        "websites": websites
+    }
+    return render(request, "home/options.html", context=context)
+
+@login_required
 def logout_view(request):
     logout(request)
     messages.add_message(request, messages.SUCCESS, 'Successfully logged out.')
