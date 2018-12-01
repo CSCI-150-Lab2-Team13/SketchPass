@@ -10,8 +10,8 @@ size = 64
 //COLORS
 //These are colors that can be chosen to draw
 var WHITE = [255, 255, 255];
-	BLACK = [0, 0, 0]; 
-	GREEN = [0, 255, 0]; 
+	BLACK = [0, 0, 0];
+	GREEN = [0, 255, 0];
 	RED  = [255, 0, 0];
 	BLUE = [0,0,255];
 	PURPLE = [142,68,173];
@@ -37,7 +37,7 @@ function setup(){
 	//Can't seem to use row/col *size have to input manually
 	// 7
 	var canvas = createCanvas(449,449);
-	
+
 	//Adding all Event Listeners
 
 	for (let i = 0; i < colors_arr.length; i++) {
@@ -47,7 +47,7 @@ function setup(){
 	for (let i = 0; i < size_arr.length; i++) {
     	size_arr[i].addEventListener('click', changeSize);
 	}
-	
+
 	$('#login-form').submit(function(e) {
 		submitPassword('id_password_login','login-submit');
 	});
@@ -66,7 +66,7 @@ function setup(){
 
 
 
-	
+
 
 	for (let i = 0; i < rows; i++) {
 		grid[i] = []
@@ -78,14 +78,14 @@ function setup(){
 }
 
 function draw(){
-	background(0);
+	
 }
 
 function mousePressed(event) {
-	if ((mouseX < grid[0][0].x) || 
+	if ((mouseX < grid[0][0].x) ||
 		(mouseX > grid[rows - 1][cols - 1].x + 64) ||
 		(mouseY < grid[0][0].y) ||
-        (mouseY > grid[rows-1][cols-1].y + 64) 
+        (mouseY > grid[rows-1][cols-1].y + 64)
 	   ){
 	}
 	else{
@@ -100,7 +100,7 @@ function mousePressed(event) {
 
 function mouseDragged(event) {
 	event.preventDefault()
-	if ((mouseX < grid[0][0].x) || 
+	if ((mouseX < grid[0][0].x) ||
 		(mouseX > grid[rows - 1][cols - 1].x + 64) ||
 		(mouseY < grid[0][0].y) ||
         (mouseY > grid[rows-1][cols-1].y + 64)
@@ -223,12 +223,12 @@ class Cell {
     this.w = tempW;
     this.h = tempH;
     this.color = colors[tempC];
-  } 
+  }
 
   clicked(x, y){
   	let d = dist(x, y, this.x + this.w/2, this.y + this.h/2);
   	if(d < this.w * active_size / 2 ){
-		this.setColorToActive(); 
+		this.setColorToActive();
 	}
   }
 
@@ -236,7 +236,7 @@ class Cell {
   	this.color = colors[active_color];
 
   }
-  
+
 
    display() {
     //stroke(0);
@@ -244,7 +244,3 @@ class Cell {
 	rect(this.x,this.y,this.w,this.h);
   	}
 }
-
-
-
-
