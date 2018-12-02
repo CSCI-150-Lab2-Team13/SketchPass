@@ -294,3 +294,46 @@ a.pill:hover {
   
     font-size: 17px;
 }
+
+.btnsizer{
+	min-width: 85%;
+	max-width: 85%;
+}
+
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 80%;
+	height: 25px;
+	border-radius: 5px;
+	background: #cccccc;
+    outline: none;
+    opacity: 0.9;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+	height: 25px;
+	border-radius: 10%;
+    background: #008fe8;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+	height: 25px;
+	border-radius: 10%;
+    background: #008fe8;
+    cursor: pointer;
+} 

@@ -17,41 +17,30 @@
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 </div>
 
+            <div class="modal-body">
                 <div class="text-center">
                     <label>All character types chosen by default. Uncheck a option if it is not desired in the password generation</label>
+                    <br><br>
                 </div>
 
-                <div class="btn-group-toggle">
+                    <button type="button" class="btn btnsizer btn-lg btn-dark active" onclick="getid(this.id);" id="uppcase" data-toggle="button" aria-pressed="true" value="true" autocomplete="on">✔ Uppercase Letters - ABC</button>
+                    <br><br>
 
-                        <label class="btn-dark btn-lg active">
-                          <input type="checkbox" checked autocomplete="on" data-target="Ubutton" id='uppcase' value="1">  Uppercase Letters - From capital A to Z 
-                        </label>
-                        <br><br>
+                    <button type="button" class="btn btnsizer btn-lg btn-dark active" onclick="getid(this.id);" id="lowcase" data-toggle="button" aria-pressed="true" value="true" autocomplete="on">✔ Lowercase Letters - abc</button>
+                    <br><br>
 
-                        <label class="btn-dark btn-lg active">
-                          <input type="checkbox" checked autocomplete="on" id='lowcase' value="1"> Lowercase Letters - From lowercase a to z
-                        </label>
-                        <br><br>
+                    <button type="button" class="btn btnsizer btn-lg btn-dark active" onclick="getid(this.id);" id="numcase" data-toggle="button" aria-pressed="true" value="true" autocomplete="on">✔ Numbers - 123</button>
+                    <br><br>
 
-                        <label class="btn-dark btn-lg active">
-                          <input type="checkbox" checked autocomplete="on" id='numcase' value="1"> Numbers - From 0 to 9
-                        </label>
-                        <br><br>
+                    <button type="button" class="btn btnsizer btn-lg btn-dark active" onclick="getid(this.id);" id="symcase" data-toggle="button" aria-pressed="true" value="true" autocomplete="on">✔ Symbols - %@^</button>
+                    <br><br>
 
-                        <label class="btn-dark btn-lg active">
-                          <input type="checkbox" checked autocomplete="on" id='symcase' value="1"> Symbols - Keyboard Standard (ex: `~!*&>])
-                        </label>
-                        <br><br>
-
-                </div>
-                
-            <div class="form-row">
-                <div class="col">
-                     <label>Enter desired password length (between 1 and 100 in length):</label>
-                     <input type="number" id='strlength' name="string length" placeholder="length" min="1" max="100" step="1">
-                     <br><br>
-                </div>
             </div>
+
+                <label>Password length: <span id="plength">50</span> characters</label>
+                <div class="slidecontainer">
+                    <input type="range" min="1" max="100" value="50" step="1" class="slider" oninput="sliderupdate();" id="passlength">
+                </div>
 
                 <div class="col-auto">
                     <label>Current generated password</label>
@@ -65,11 +54,7 @@
                 </div>
             </div>
         </div>
-     <script>
-         $('#pwgenoutput').click(function() {
-          $('#pwgenmodal').modal('hide');
-         });
-    </script>
     </div>
 </body >
 </html >
+ 
