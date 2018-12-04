@@ -2,7 +2,7 @@
 {% load i18n %}
 
 
-{% block head_title %}{% trans "Password Reset" %}{% endblock %}
+
 
 {% block content %}
 
@@ -13,14 +13,13 @@
       <div class="container text-center" >
         <img style="width: 100%; height: 200%;" src="../../static/img/logo.svg" alt="Sketchpass">
         <p class="lead">Better Safe Than Sorry</p>
-        <p>{% trans "Forgotten your password? Enter your e-mail address below, and we'll send you an e-mail allowing you to reset it." %}</p>
+        <p>{% trans "Enter your e-mail address below, and we'll send you an e-mail allowing to verify your account." %}</p>
 
-        <form method="POST" action="{% url 'reset_password' %}" class="password_reset">
+        <form method="POST" action="{% url 'resend_account_activation' %}" class="password_reset">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="{% trans 'Reset My Password' %}" />
+            <input type="submit" value="{% trans 'Resend Email Confirmation' %}" />
         </form>
-        <p>{% blocktrans %}Please contact us if you have any trouble resetting your password.{% endblocktrans %}</p>
           </div>
          <!-- <h1 style=font-size:85px> Sketchpass</h1> --->
       </header>

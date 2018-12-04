@@ -9,6 +9,12 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
+
+
+#email backend
+#https://docs.djangoproject.com/en/1.7/topics/email/#smtp-backend
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 from .email_info import *
 from django.contrib.messages import constants as messages
 EMAIL_USE_TLS = EMAIL_USE_TLS
@@ -115,6 +121,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
