@@ -10,7 +10,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from mainApp.models import User, Website
 from mainApp import views
-from .forms import WebsiteForm
+from .forms import WebsiteForm, EmailChangeForm
 
 
 @login_required
@@ -89,6 +89,19 @@ def options_view(request):
                 user.website_set.all().delete()
                 messages.add_message(request, messages.INFO, 'Successfully deleted all websites.')
                 return redirect("/home")
+
+        elif 'update-email' in request.POST:
+            user = User.objects.get(id=request.user.id)
+            form = EmailChangeForm(request.POST)
+            if form.is_valid():
+                new_email = form.cleaned_data['new_email']
+                user.email = new_email
+                user.save()
+                messages.add_message(request, messages.SUCCESS, 'New email: %s' % new_email )
+                return redirect("/home")
+            else:
+                messages.add_message(request, messages.ERROR, 'Email address already used!')
+                return redirect('home/options.html')
 
     user = User.objects.get(id=request.user.id)
     websites = user.website_set.all()

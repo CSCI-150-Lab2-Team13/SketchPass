@@ -1,7 +1,6 @@
 {% extends "mainApp/header.html" %}
-{% include "mainApp/includes/messages.html" %}
-
 {% block content %}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/home">SketchPass</a>
       <ul class="navbar-nav mr-auto"></ul>
@@ -9,17 +8,15 @@
 
   <a href={% url "options_view" %} class="nav-link active"><button class="btn btn-secondary my-2 my-sm-0"><i class="fas fa-cogs"></i></button></a>
   <a href={% url "logout_view" %} class="nav-link active"><button class="btn btn-primary my-2 my-sm-0">Log Out</button></a>
-
 </nav>
-<div class="container-fluid">
-<form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Change Email address</label>
-      <input type="email" style="width: 50%;" class="form-control" id="exampleInputEmail1" placeholder={{user.email}}>
-    </div>
+{% include "mainApp/includes/messages.html" %}
 
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
+<div class="container-fluid">
+    <form  method="POST" action="{% url 'options_view' %}">{%csrf_token%}
+      <label for="id_new_email">New email address:</label>
+      <input class='form-control' style="width: 50%;" type="email" name="new_email" required id="id_new_email" placeholder={{user.email}}>   
+       <button type="submit" class="btn btn-primary" name="update-email">Submit</button>
+      </form>
 </div>
 
 <form method="POST" action="{% url 'options_view' %}">
@@ -39,9 +36,8 @@
               <p>Your information will become permanently deleted and will <strong style="">NOT</strong> be able to be recovered!</p>
             </div>
              <div class="modal-footer">
-                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button> 
-                  
-                  <button class = "btn btn-danger" type="submit"  style="text-align: center center" name='delete-all'><i class="far fa-trash-alt"></i></button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>  
+                <button class = "btn btn-danger" type="submit"  style="text-align: center center" name='delete-all'><i class="far fa-trash-alt"></i></button>
               
               </form>
             </div>
