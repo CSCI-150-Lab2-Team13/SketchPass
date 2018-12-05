@@ -1,0 +1,29 @@
+{% extends "mainApp/header.html" %}
+{% load i18n %}
+
+
+
+
+{% block content %}
+
+    {% if user.is_active %}
+    {% include "account/snippets/already_logged_in.html" %}
+    {% endif %}
+    <header class="header-gr1 text-white" id="page-top">
+      <div class="container text-center" >
+        <img style="width: 100%; height: 200%;" src="../../../static/img/logo.svg" alt="Sketchpass">
+        <p class="lead">Better Safe Than Sorry</p>
+        <p>{% trans "Enter your e-mail address below, and we'll send you an e-mail allowing to verify your account." %}</p>
+
+        <form method="POST" action="{% url 'resend_account_activation' %}" class="password_reset">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="{% trans 'Resend Email Confirmation' %}" />
+        </form>
+          </div>
+         <!-- <h1 style=font-size:85px> Sketchpass</h1> --->
+      </header>
+
+
+
+{% endblock %}

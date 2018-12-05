@@ -1,0 +1,23 @@
+{% extends "mainApp/header.html" %}
+{% load i18n %}
+
+
+
+{% block title %}{{ title }}{% endblock %}
+{% block content_title %}<h1>{{ title }}</h1>{% endblock %}
+
+{% block content %}
+<header class="header-gr1 text-white" id="page-top">
+  <div class="container text-center" >
+    <img style="width: 100%; height: 200%;" src="../../../static/img/logo.svg" alt="Sketchpass">
+    <p class="lead">Better Safe Than Sorry</p>
+    <p>{% trans "Your password has been set.  You may go ahead and log in now." %}</p>
+
+    <p><button class="btn btn-success"><a  href="/resend-confirmation/" class="text-white" style="text-decoration: none;">{% trans 'Log in' %}</a></button></p>
+    </div>
+   <!-- <h1 style=font-size:85px> Sketchpass</h1> --->
+</header>
+
+
+
+{% endblock %}

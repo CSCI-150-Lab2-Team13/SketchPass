@@ -5,7 +5,6 @@
 	{% load staticfiles %}
 	<script src= "{% static 'js/drawingbox.js' %}" type="text/javascript"></script>
 {% endblock %}
-
 <!-- drawingbox.html --->
 <nav class="navbar navbar-expand-lg navbar-dark nav-index fixed-top" id="mainNav">
   <a class="navbar-brand js-scroll-trigger" href="#page-top">Sketchpass</a>
@@ -15,7 +14,7 @@
 
   <div class="collapse navbar-collapse" id="navbarResponsive">
        <ul class="navbar-nav ml-auto" style="margin-right: 1%;">
-       		<li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item">
@@ -29,9 +28,10 @@
             </li>
         </ul>
         <br>
+
        	<button type="button" class="btn btn-primary nav-item" data-toggle="modal" data-target=".bd-example-modal-lg">Login/Register</button>
 </div>
-    
+
 </nav>
 
 
@@ -60,9 +60,9 @@
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id ="form-modal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-	
+
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
-	
+
 				<li class="nav-item">
 					<a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login-tab" aria-selected="true">	Login
 					</a>
@@ -74,7 +74,7 @@
 		</ul>
 		<hr>
 		<div class="tab-content" id="myTabContent">
-			
+
 			<div class = "container-fluid" id="sketch-box">
 
 				  <div class="btn-group-vertical btn-group-toggle mouse-sizes" data-toggle="buttons">
@@ -99,22 +99,24 @@
 		  <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
 			<div class ="container">
 				<form method="post" id="login-form">
-				 
+
 				  {% include 'mainApp/includes/formtemplate.html' with form=login_form %}
 
 				  <button type="submit" class="btn btn-primary" id = "login-submit" name = "login-submit">Submit</button>
-				</form>
-			</div>
+
+
+      	</form>
+        <form method= "post" id="password-form">
+         {% include 'mainApp/includes/formtemplate.html' with form=password_form %}
+        <a href="/reset-password/" class="button">Reset Password</a>
+        </form>
+    	</div>
 		  </div>
 
-		  <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-		  	<div class="animated flip">
-				<div class="container-fluid text-center"> <b> Be sure to make something unique!  </b>
-				</div>
-			</div>
+		   <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
 			<div class ="container">
 				<form method="post" id ="register-form">
-				 
+
 				  {% include 'mainApp/includes/formtemplate.html' with form=register_form %}
 
 				  <button type="submit" class="btn btn-primary" id = "register-submit" name = "register-submit">Submit</button>
@@ -137,7 +139,7 @@
 		$ ('#login-tab').tab('show');
 		$('#form-modal').removeClass('fade');
 	});
-		   
+
 </script>
 
 {% elif state == 2 %}

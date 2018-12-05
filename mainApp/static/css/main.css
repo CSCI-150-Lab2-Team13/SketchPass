@@ -236,7 +236,7 @@ background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
 .edit-button{
 	position: absolute;
 	bottom: 2%;
-	right: 1%;
+	right: 3%;
 }
 
 .delete-button{
@@ -248,13 +248,13 @@ background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
 .copy-username-button{
 	position: absolute;
 	bottom: 2%;
-	right: 15%;
+	right: 20%;
 }
 
 .copy-password-button{
 	position: absolute;
 	bottom: 2%;
-	right: 28%;
+	right: 35%;
 }
 
 
@@ -295,7 +295,6 @@ a.pill:hover {
   
     font-size: 17px;
 }
-
 
 .btnsizer{
 	min-width: 85%;
@@ -339,4 +338,3 @@ a.pill:hover {
     background: #008fe8;
     cursor: pointer;
 }  
-

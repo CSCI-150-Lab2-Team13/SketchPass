@@ -16,6 +16,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .forms import LoginForm
 from .forms import RegisterForm
+from .forms import ResendActivationLinkForm
 from .tokens import account_activation_token
 from mainApp.models import User
 from django import forms
@@ -67,7 +68,7 @@ def index(request):
 				to_email = form.cleaned_data.get('email_register')
 				email = EmailMessage(mail_subject, message, to=[to_email])
 				email.send()
-				return HttpResponse('Please confirm your email address to complete the registration You will not be able to login until you do')
+				return redirect("home/")
 			else:
 				return render(request, 'mainApp/index.html', {'login_form' : login_form, 'register_form':register_form, 'state':2})
 	else:
@@ -86,6 +87,35 @@ def activate (request,uidb64,token):
 		user.save()
 		login(request, user)
 		# return redirect('home')
-		return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+		return render(request,'activate_complete.html')
 	else:
-		 return HttpResponse('Activation link is invalid!')
+		return render(request,'invalid_link.html')
+
+def resend_account_activation(request):
+    if request.method == 'POST':
+        form = ResendActivationLinkForm(request.POST)
+        if form.is_valid():
+            active_user = User._default_manager.filter(**{
+                '%s__iexact' % User.get_email_field_name(): form.cleaned_data['email'],
+                'is_active': False,
+            })
+            if active_user:
+                print('****************************')
+                print(active_user[0])
+                current_site = get_current_site(request)
+                subject = 'Activate Your MySite Account'
+                message = render_to_string('activate_email.html', {
+                    'user': active_user[0],
+                    'domain': current_site.domain,
+                    'uid': urlsafe_base64_encode(force_bytes(active_user[0].pk)).decode(),
+                    'token': account_activation_token.make_token(active_user[0]),
+                })
+                active_user[0].email_user(subject, message)
+                return redirect("/home")
+            else:
+                return redirect("/home")
+    else:
+        print("else")
+        form = ResendActivationLinkForm()
+    print("ending before render")
+    return render(request, 'resend_email.html', {'form': form})
