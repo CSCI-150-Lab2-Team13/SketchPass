@@ -120,5 +120,4 @@ def download_websites(request):
 @login_required
 def logout_view(request):
     logout(request)
-    messages.add_message(request, messages.SUCCESS, 'Successfully logged out.')
     return redirect(views.index)
