@@ -1,5 +1,5 @@
 ﻿
-//use the html if you need to see the code in action 
+//use the html if you need to see the code in action  
 function pwgeneration() {
     var use = "";
     var final = "";
