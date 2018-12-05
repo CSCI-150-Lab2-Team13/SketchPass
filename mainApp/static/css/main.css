@@ -284,6 +284,7 @@ a.pill:hover, a.pill:visited, a.pill:link, a.pill:active
 a.pill:hover {
     box-shadow: 0px 15px 20px rgba(0, 80, 115, .4);
     transform: translateY(-5%);
+    transform: translateX(.05%);
     background-color: rgba(16, 125, 172, 1); 
     
     color:white;
@@ -294,6 +295,7 @@ a.pill:hover {
   
     font-size: 17px;
 }
+
 
 .btnsizer{
 	min-width: 85%;
@@ -337,3 +339,4 @@ a.pill:hover {
     background: #008fe8;
     cursor: pointer;
 } 
+
