@@ -115,8 +115,9 @@ def options_view(request):
     }
     return render(request, "home/options.html", context=context)
 
-# @login_required
-# def download_websites(request):
+@login_required
+def download_websites(request):
+    return
 
 @login_required
 def logout_view(request):
