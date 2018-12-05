@@ -1,0 +1,70 @@
+{% extends "mainApp/header.html" %}
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/home">SketchPass</a>
+      <ul class="navbar-nav mr-auto"></ul>
+    <ul style="list-style-type:none"></ul>
+
+  <a href={% url "options_view" %} class="nav-link active"><button class="btn btn-secondary my-2 my-sm-0"><i class="fas fa-cogs"></i></button></a>
+  <a href={% url "logout_view" %} class="nav-link active"><button class="btn btn-primary my-2 my-sm-0">Log Out</button></a>
+</nav>
+{% include "mainApp/includes/messages.html" %}
+
+<div class="container" >
+  <h5 class=" passwords-header-h5 text-center p-3 bg-dark text-white">Options</h5>
+  <div class="container card-container-custom">
+  <div class="card text-center" style="width: 41.5em;margin:0 auto;">
+    <div class="card-header">
+      Change Email
+    </div>
+    <div class="card-body">
+          <form  method="POST" action="{% url 'options_view' %}">{%csrf_token%}
+            <label for="id_new_email"></label>
+            <div class="input-group mt-0">
+            <input class='form-control' style="width: 50%;" type="email" name="new_email" required id="id_new_email" placeholder="New email address">   
+            <button type="submit" class="btn btn-primary" name="update-email">Submit</button>
+            </div>
+          </form>
+    </div>
+    <div class="card-header mt-0">
+      Delete
+    </div>
+  <div class="card-body">
+    <form method="POST" action="{% url 'options_view' %}">{% csrf_token %}
+    <p class="card-text">Permanently delete all saved passwords.</p>
+    <button type="button" class="btn btn-danger delete-button" data-toggle="modal" data-target="#delete-modal">Delete All <i class="far fa-trash-alt"></i></button>
+
+    <div class="modal fade" aria-labelledby="deleteModal" aria-hidden="true" id ="delete-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Are you sure you want to delete all websites?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              <div class="modal-body">
+                  <p>Your information will become permanently deleted and will <strong style="">NOT</strong> be able to be recovered!</p>
+                </div>
+                <div class="modal-footer">
+                    <a href={% url "download_websites" %} class="nav-link active">
+                    <button class="btn btn-info" type="submit">
+                        <i class="fas fa-download"></i> Save
+                    </button></a>
+                    <button class = "btn btn-danger" type="submit"  style="text-align: center center" name='delete-all'><i class="far fa-trash-alt"></i> Delete</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                  </form>
+                </div>
+      
+          </div>
+        </div>
+      </div>
+
+          
+        </div>
+      </div>
+    </div>
+
+</div>
+{% endblock %}
