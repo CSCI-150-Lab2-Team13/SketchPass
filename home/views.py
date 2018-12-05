@@ -12,9 +12,7 @@ from mainApp.models import User, Website
 from mainApp import views
 from .forms import WebsiteForm, EmailChangeForm
 from django.core import serializers
-from StringIO import StringIO
-import csv
-from django.utils.encoding import smart_str
+
 
 
 @login_required
