@@ -1,0 +1,29 @@
+{% extends "mainApp/header.html" %}
+{% load i18n %}
+
+
+
+{% block title %}{{ title }}{% endblock %}
+{% block content_title %}<h1>{{ title }}</h1>{% endblock %}
+{% block content %}
+<!-- drawingbox.html --->
+<nav class="navbar navbar-expand-lg navbar-dark nav-index fixed-top" id="mainNav">
+  <a class="navbar-brand js-scroll-trigger" href="">Sketchpass</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  {% block breadcrumbs %}
+  <div class="breadcrumbs">
+  <a href="/">{% trans 'Home' %}</a>
+  &rsaquo; {% trans 'Password reset' %}
+  </div>
+  {% endblock %}
+
+</nav>
+    <section>
+    <p>{% trans "We've emailed you instructions for setting your password, if an account exists with the email you entered. You should receive them shortly." %}</p>
+    <p>{% trans "If you don't receive an email, please make sure you've entered the address you registered with, and check your spam folder." %}</p>
+    <a href="/" class="nav-link active"><button class="btn btn-primary my-2 my-sm-0">Back to Home Page</button></a>
+      </section>
+
+{% endblock %}
