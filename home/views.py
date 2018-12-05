@@ -11,6 +11,10 @@ from django.http import HttpResponse
 from mainApp.models import User, Website
 from mainApp import views
 from .forms import WebsiteForm, EmailChangeForm
+from django.core import serializers
+from StringIO import StringIO
+import csv
+from django.utils.encoding import smart_str
 
 
 @login_required
@@ -110,6 +114,9 @@ def options_view(request):
         "websites": websites
     }
     return render(request, "home/options.html", context=context)
+
+# @login_required
+# def download_websites(request):
 
 @login_required
 def logout_view(request):
