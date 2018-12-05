@@ -7,16 +7,23 @@
 {% block content_title %}<h1>{{ title }}</h1>{% endblock %}
 
 {% block content %}
-<header class="header-lav text-white" id="page-top">
+<header class="header-gr1 text-white">
   <div class="container text-center" >
-    <img style="width: 100%; height: 200%;" src="../static/img/logo.svg" alt="Sketchpass">
+    <img style="width: 100%; height: 100%;" src="../../../static/img/logo.svg" alt="Sketchpass">
     <p class="lead">Better Safe Than Sorry</p>
     <p>{% trans "Activation link is invalid.  To get a new activation click the link below to go to the page where an email will be resent." %}</p>
 
-    <p><a href="/resend-confirmation/">{% trans 'Reset Form' %}</a></p>
+    <p><button class="btn btn-success"><a  href="/resend-confirmation/" class="text-white" style="text-decoration: none;">{% trans 'Reset Form' %}</a></button></p>
     </div>
+
    <!-- <h1 style=font-size:85px> Sketchpass</h1> --->
 </header>
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Sketchpass 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
 
 
 
