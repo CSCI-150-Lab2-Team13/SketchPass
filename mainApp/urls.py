@@ -20,10 +20,16 @@ from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include
+from django.contrib.auth.views import password_reset,password_reset_done,password_reset_complete, password_reset_confirm
 from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name = 'index'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
+    url(r'^reset-password/$', password_reset, name= 'reset_password'),
+        url(r'^reset-password/done/$',password_reset_done,name='password_reset_done'),
+    url(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',password_reset_confirm,name='password_reset_confirm'),
+    url(r'^reset-password/complete/$', password_reset_complete,name = 'password_reset_complete'),
+    ##url(r'^resend-confirmation/$', views.resend_account_activation, name='resend_account_activation'),    
 ]

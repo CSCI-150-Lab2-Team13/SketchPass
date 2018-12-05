@@ -71,3 +71,7 @@ class RegisterForm(forms.ModelForm):
 
 
 #For categories forms.ChoiceField(choices[('ques')]
+
+
+class ResendActivationLinkForm(forms.Form):
+    email = forms.EmailField(label="Email", required = True, max_length=254)
