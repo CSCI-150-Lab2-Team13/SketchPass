@@ -16,6 +16,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .forms import LoginForm
 from .forms import RegisterForm
+from .forms import ResendActivationLinkForm
 from .tokens import account_activation_token
 from mainApp.models import User
 from django import forms
@@ -89,3 +90,32 @@ def activate (request,uidb64,token):
 		return render(request,'activate_complete.html')
 	else:
 		return render(request,'invalid_link.html')
+
+def resend_account_activation(request):
+    if request.method == 'POST':
+        form = ResendActivationLinkForm(request.POST)
+        if form.is_valid():
+            active_user = User._default_manager.filter(**{
+                '%s__iexact' % User.get_email_field_name(): form.cleaned_data['email'],
+                'is_active': False,
+            })
+            if active_user:
+                print('****************************')
+                print(active_user[0])
+                current_site = get_current_site(request)
+                subject = 'Activate Your MySite Account'
+                message = render_to_string('activate_email.html', {
+                    'user': active_user[0],
+                    'domain': current_site.domain,
+                    'uid': urlsafe_base64_encode(force_bytes(active_user[0].pk)).decode(),
+                    'token': account_activation_token.make_token(active_user[0]),
+                })
+                active_user[0].email_user(subject, message)
+                return redirect("/home")
+            else:
+                return redirect("/home")
+    else:
+        print("else")
+        form = ResendActivationLinkForm()
+    print("ending before render")
+    return render(request, 'resend_email.html', {'form': form})
