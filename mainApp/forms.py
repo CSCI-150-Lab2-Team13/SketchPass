@@ -75,3 +75,25 @@ class RegisterForm(forms.ModelForm):
 
 class ResendActivationLinkForm(forms.Form):
     email = forms.EmailField(label="Email", required = True, max_length=254)
+
+
+class ResetPasswordForm (forms.ModelForm):
+	password_reset = forms.CharField(max_length = 100, widget = forms.HiddenInput(), required = True)
+	class Meta:
+		model = User
+		fields = () #custom defined above
+
+
+	def clean (self):
+		password_reset = self.cleaned_data.get('password_reset')
+		usedNums = set()
+		uniqueColors = 0
+		return password_reset
+
+	def save(self, commit = True):
+		password = self.cleaned_data['password_reset']
+		user = super(ResetPasswordForm,self).save(commit= False)
+		user.password = make_password(password)
+		if commit:
+			user.save()
+		return user
