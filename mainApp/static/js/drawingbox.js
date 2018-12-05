@@ -56,6 +56,10 @@ function setup(){
 		submitPassword('id_password_register', 'register-submit');
 	});
 
+
+	$('#reset-form').submit(function() {
+		submitPassword('id_password_reset', 'password-submit');
+	});
 //	clearElem.addEventListener('click', clearAll);
 
 	///////
@@ -78,7 +82,7 @@ function setup(){
 }
 
 function draw(){
-	background(0);
+
 }
 
 function mousePressed(event) {
@@ -193,8 +197,7 @@ function parseColors(given_color){
 
 
 function submitPassword(input_id, submit_id){
-
-  if(submit_id == "login-submit" || submit_id == "register-submit"){
+  if(submit_id == "login-submit" || submit_id == "register-submit" || submit_id == "password-submit"){
     var pass = "";
 	for (let i = 0; i < rows; i++) {
 		for (let j = 0; j < cols; j++) {
