@@ -1,6 +1,7 @@
 from django import forms
 from mainApp.models import Website
 from mainApp.models import User
+from. validator import email_used_validator
 
 class WebsiteForm(forms.ModelForm):
     class Meta:
@@ -21,3 +22,7 @@ class WebsiteForm(forms.ModelForm):
        		'password': "Password",
             'username': "Username"
         }
+
+class EmailChangeForm(forms.Form):
+
+    new_email = forms.EmailField(label='New email address', validators=[email_used_validator])

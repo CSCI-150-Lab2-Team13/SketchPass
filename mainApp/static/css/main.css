@@ -236,7 +236,7 @@ background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
 .edit-button{
 	position: absolute;
 	bottom: 2%;
-	right: 1%;
+	right: 3%;
 }
 
 .delete-button{
@@ -248,13 +248,13 @@ background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
 .copy-username-button{
 	position: absolute;
 	bottom: 2%;
-	right: 15%;
+	right: 20%;
 }
 
 .copy-password-button{
 	position: absolute;
 	bottom: 2%;
-	right: 28%;
+	right: 35%;
 }
 
 
@@ -284,6 +284,7 @@ a.pill:hover, a.pill:visited, a.pill:link, a.pill:active
 a.pill:hover {
     box-shadow: 0px 15px 20px rgba(0, 80, 115, .4);
     transform: translateY(-5%);
+    transform: translateX(.05%);
     background-color: rgba(16, 125, 172, 1); 
     
     color:white;
@@ -294,3 +295,46 @@ a.pill:hover {
   
     font-size: 17px;
 }
+
+.btnsizer{
+	min-width: 85%;
+	max-width: 85%;
+}
+
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 80%;
+	height: 25px;
+	border-radius: 5px;
+	background: #cccccc;
+    outline: none;
+    opacity: 0.9;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+	height: 25px;
+	border-radius: 10%;
+    background: #008fe8;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+	height: 25px;
+	border-radius: 10%;
+    background: #008fe8;
+    cursor: pointer;
+}  
