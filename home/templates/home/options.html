@@ -41,10 +41,6 @@
                   <p>Your information will become permanently deleted and will <strong style="">NOT</strong> be able to be recovered!</p>
                 </div>
                 <div class="modal-footer">
-                    <a href={% url "download_websites" %} class="nav-link active">
-                    <button class="btn btn-info" type="submit">
-                        <i class="fas fa-download"></i> Save
-                    </button></a>
                     <button class = "btn btn-danger" type="submit"  style="text-align: center center" name='delete-all'><i class="far fa-trash-alt"></i> Delete</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                   </form>
@@ -58,7 +54,7 @@
         </div>
       </div>
       <br>
-      <button onclick="window.history.back();" class="btn btn-secondary " >Cancel</button>   
+      <a href="/home/"><button class="btn btn-secondary " >Cancel</button></a>
     </div>
 
 </div>
