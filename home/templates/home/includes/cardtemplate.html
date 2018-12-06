@@ -21,6 +21,7 @@
           function copyToClipboard(text) {
             //Need to create dummy div to use select function
             var dummy = $('<input>').val(text).appendTo('body').select()
+            dummy.hide();
             document.execCommand("copy");
           }
         </script>
