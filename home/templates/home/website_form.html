@@ -7,10 +7,11 @@
 		<form method="POST" action="{% url 'add' %}">
 		    {% include 'home/includes/websiteformtemplate.html' with form=website_form %}
 		    <button class="btn btn-primary" >Save</button>
-		    
-			<a href="/home/"><button class="btn btn-secondary " >Cancel</button></a>
+		    <a href="/home/"><div class="btn btn-secondary " >Cancel</div></a>
+		</form> 
+			
 
-		</form>
+		
 	</div>
 
 </div>
