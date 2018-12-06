@@ -9,14 +9,18 @@
     <a class="navbar-brand" href="/home">SketchPass</a>
       <ul class="navbar-nav mr-auto">
     </ul>
-    <ul style="list-style-type:none">
+    <ul style="">
     </ul>
 
-  <a href="options/" class="nav-link active"><button class="btn btn-secondary my-2 my-sm-0"><i class="fas fa-cogs"></i></button></a>
-  <a href="logout/" class="nav-link active"><button class="btn btn-primary my-2 my-sm-0">Log Out</button></a>
-
-
-
+    <ul class="navbar-nav">
+      <li>
+        <a href="options/" class="nav-link active"><button class="btn btn-secondary my-2 my-sm-0"><i class="fas fa-cogs"></i></button></a>
+      </li>
+      <li>
+         <a href="logout/" class="nav-link active"><button class="btn btn-primary my-2 my-sm-0">Log Out</button></a>
+      </li>
+    </ul>
+  
 </nav>
 
 {% include "mainApp/includes/messages.html" %}
