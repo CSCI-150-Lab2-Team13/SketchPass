@@ -55,9 +55,7 @@ def index(request):
             register_form = RegisterForm(request.POST)
             email = request.POST.get("email_register", None)
             password = request.POST.get("password_register", None)
-            form = RegisterForm(request.POST)
-
-            if form.is_valid():
+            if register_form.is_valid():
                 #create inactive user with no password
                 ##user = authenticate(email = email, password = password)
                 user =register_form.save(commit = False)
@@ -72,7 +70,7 @@ def index(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk).decode()),
                 'token': account_activation_token.make_token(user),
                 })
-                to_email = form.cleaned_data.get('email_register')
+                to_email = register_form.cleaned_data.get('email_register')
                 email = EmailMessage(mail_subject, message, to=[to_email])
                 email.send()
                 return redirect("home/")
@@ -135,11 +133,11 @@ def password_reset_confirm(request, uidb64, token):
         View that checks the hash in a password reset link and presents a
         form for entering a new password.
     """
-    reset_form = ResetPasswordForm()
+    uid = force_text(urlsafe_base64_decode(uidb64))
+    user = User.objects.get(pk=uid)
     try:
+        reset_form = ResetPasswordForm(instance=user)
         # urlsafe_base64_decode() decodes to bytestring on Python 3
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
     except (TypeError, ValueError, OverflowError, user.DoesNotExist):
         user = None
     if user is not None and default_token_generator.check_token(user, token):
@@ -147,24 +145,19 @@ def password_reset_confirm(request, uidb64, token):
         title = ('Enter new password')
         if request.method == 'POST':
             if 'password-submit' in (request.POST):
-                reset_form = ResetPasswordForm(request.POST)
+                reset_form = ResetPasswordForm(request.POST,instance=user)
                 password = request.POST.get("password_reset", None)
-                messages.add_message(request, messages.SUCCESS,"Hi2")
-                form = ResetPasswordForm(request.POST)
-                if form.is_valid():
-                    newpassword = reset_form.cleaned_data['password_reset']
-                    user.password = newpassword
+             
+                if reset_form.is_valid():
+                    user=reset_form.save(commit = False)
                     user.save()
-                    messages.add_message(request, messages.SUCCESS,"Hi3")
                     return HttpResponseRedirect('/')
         else:
-            reset_form = ResetPasswordForm(user)
-            messages.add_message(request, messages.SUCCESS,"i am here")
+            reset_form = ResetPasswordForm(instance=user)
     else:
         validlink = False
-        reset_form = None
+        reset_form = ResetPasswordForm(instance=user)
         title = ('Password reset unsuccessful')
-        messages.add_message(request, messages.SUCCESS,"reset failed")
     context = {
         'reset_form': ResetPasswordForm,
         'title': title,
