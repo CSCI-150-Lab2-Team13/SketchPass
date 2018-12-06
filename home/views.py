@@ -11,6 +11,8 @@ from django.http import HttpResponse
 from mainApp.models import User, Website
 from mainApp import views
 from .forms import WebsiteForm, EmailChangeForm
+from mainApp.forms import ResetPasswordForm
+from django.contrib.auth import update_session_auth_hash
 
 
 @login_required
@@ -85,6 +87,7 @@ def edit_website(request):
 
 @login_required
 def options_view(request):
+    user = User.objects.get(id=request.user.id)
     if request.method == 'POST':
         if 'delete-all' in request.POST:
                 user = User.objects.get(id=request.user.id)
@@ -105,11 +108,20 @@ def options_view(request):
                 messages.add_message(request, messages.ERROR, 'Email address already used!')
                 return redirect('home/options.html')
 
-    user = User.objects.get(id=request.user.id)
+        if 'password-submit' in (request.POST):
+                reset_form = ResetPasswordForm(request.POST,instance=user)
+                password = request.POST.get("password_reset", None)
+                if reset_form.is_valid():
+                    user=reset_form.save(commit = False)
+                    user.save()
+                    update_session_auth_hash(request, user)
+                    messages.add_message(request, messages.SUCCESS, 'Successfully changed password' )
+                    return redirect('/home/options')
     websites = user.website_set.all()
     context = {
         "user": user,
-        "websites": websites
+        "websites": websites,
+        'reset_form': ResetPasswordForm
     }
     return render(request, "home/options.html", context=context)
 
