@@ -12,18 +12,20 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  {% block breadcrumbs %}
-  <div class="breadcrumbs">
-  <a href="/">{% trans 'Home' %}</a>
-  &rsaquo; {% trans 'Password reset' %}
-  </div>
-  {% endblock %}
+
 
 </nav>
-    <section>
+    <header class="header-gr1 text-white"  id="page-top" style="padding-bottom: 30%;">
+      <div class="container text-center" style="width:100%; height: 100%; ">
+        
     <p>{% trans "We've emailed you instructions for setting your password, if an account exists with the email you entered. You should receive them shortly." %}</p>
     <p>{% trans "If you don't receive an email, please make sure you've entered the address you registered with, and check your spam folder." %}</p>
     <a href="/" class="nav-link active"><button class="btn btn-primary my-2 my-sm-0">Back to Home Page</button></a>
-      </section>
+ 
+          </div>
+         <!-- <h1 style=font-size:85px> Sketchpass</h1> --->
+    </header>
+
 
 {% endblock %}
+
