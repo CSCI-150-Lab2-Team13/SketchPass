@@ -15,6 +15,9 @@ from .forms import WebsiteForm, EmailChangeForm
 
 @login_required
 def index(request):
+    if request.user in request.POST:
+        logout(request)
+
     user= User.objects.get_by_natural_key(request.user)
     websitesValues = user.website_set.values()
     state = 3
