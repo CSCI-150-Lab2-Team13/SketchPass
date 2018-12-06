@@ -30,6 +30,8 @@ from django import forms
 
 # Create your views here.
 def index(request):
+    if request.user in request.POST:
+        logout(request)
     login_form = LoginForm()
     register_form = RegisterForm()
 
@@ -94,6 +96,8 @@ def activate (request,uidb64,token):
         # return redirect('home')
         return render(request,'activate_complete.html')
     else:
+        if request.user in request.POST:
+            logout(request)
         return render(request,'invalid_email_link.html')
 
 
