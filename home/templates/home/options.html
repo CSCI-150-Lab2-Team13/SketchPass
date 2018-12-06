@@ -20,9 +20,19 @@
             </div>
           </form>
     </div>
+
+    <div class="card-header">
+      Password
+    </div>
+
+    <div class="card-body">
+          <button type="button" class="btn pull-right" data-toggle="modal" data-target="#change-modal">Change password <i class="fas fa-key"></i></button>
+    </div>
+
     <div class="card-header mt-0">
       Delete
     </div>
+    
   <div class="card-body">
     <form method="POST" action="{% url 'options_view' %}">{% csrf_token %}
     <p class="card-text">Permanently delete all saved passwords.</p>
@@ -55,6 +65,10 @@
       </div>
       <br>
       <a href="/home/"><button class="btn btn-secondary " >Cancel</button></a>
+    </div>
+
+    <div class="modal fade" aria-labelledby="changeModal" aria-hidden="true" id ="change-modal" tabindex="-1" role="dialog">
+        {% include "mainApp/includes/drawboxReset.html" %}
     </div>
 
 </div>
