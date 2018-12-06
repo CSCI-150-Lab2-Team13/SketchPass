@@ -19,6 +19,7 @@ from django.conf.urls import url
 
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 from django.conf.urls import include
 from django.contrib.auth.views import password_reset,password_reset_done,password_reset_complete,password_reset_confirm
 from . import views
@@ -31,6 +32,9 @@ urlpatterns = [
     url(r'^reset-password/done/$',password_reset_done, {'template_name': 'reset_done.html'},name='password_reset_done'),
     url(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',views.password_reset_confirm, name='password_reset_confirm'),
     url(r'^reset-password/complete/$', password_reset_complete,{'template_name': 'reset_complete.html'},name = 'password_reset_complete'),
-    url(r'^resend-confirmation/$', views.resend_account_activation, name='resend_account_activation'),    
+    url(r'^resend-confirmation/$', views.resend_account_activation, name='resend_account_activation'), 
+    url(r'^verified-email/$', TemplateView.as_view(template_name="verified_email.html"), name='verified_email'),
+    url(r'^invalid-link/$', TemplateView.as_view(template_name="invalid_password_link.html"), name='invalid_password_link'),
+       
 ]
 

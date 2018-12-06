@@ -73,7 +73,7 @@ def index(request):
                 to_email = register_form.cleaned_data.get('email_register')
                 email = EmailMessage(mail_subject, message, to=[to_email])
                 email.send()
-                return redirect("home/")
+                return redirect('verified_email')
             else:
                 return render(request, 'mainApp/index.html', {'login_form' : login_form, 'register_form':register_form, 'state':2})
     else:
@@ -94,7 +94,8 @@ def activate (request,uidb64,token):
         # return redirect('home')
         return render(request,'activate_complete.html')
     else:
-        return render(request,'invalid_link.html')
+        return render(request,'invalid_email_link.html')
+
 
 def resend_account_activation(request):
     if request.method == 'POST':
@@ -151,13 +152,14 @@ def password_reset_confirm(request, uidb64, token):
                 if reset_form.is_valid():
                     user=reset_form.save(commit = False)
                     user.save()
-                    return HttpResponseRedirect('/')
+                    return redirect('password_reset_complete')
         else:
             reset_form = ResetPasswordForm(instance=user)
     else:
         validlink = False
         reset_form = ResetPasswordForm(instance=user)
         title = ('Password reset unsuccessful')
+        return redirect ('invalid_password_link')
     context = {
         'reset_form': ResetPasswordForm,
         'title': title,
