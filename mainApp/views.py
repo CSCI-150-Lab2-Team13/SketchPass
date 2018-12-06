@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse
 from django.shortcuts import resolve_url
@@ -56,7 +55,6 @@ def index(request):
             register_form = RegisterForm(request.POST)
             email = request.POST.get("email_register", None)
             password = request.POST.get("password_register", None)
-
             if register_form.is_valid():
                 #create inactive user with no password
                 ##user = authenticate(email = email, password = password)
@@ -149,21 +147,17 @@ def password_reset_confirm(request, uidb64, token):
             if 'password-submit' in (request.POST):
                 reset_form = ResetPasswordForm(request.POST,instance=user)
                 password = request.POST.get("password_reset", None)
-                messages.add_message(request, messages.SUCCESS,"Hi2")
-                
+             
                 if reset_form.is_valid():
                     user=reset_form.save(commit = False)
                     user.save()
-                    messages.add_message(request, messages.SUCCESS,"Hi3")
                     return HttpResponseRedirect('/')
         else:
             reset_form = ResetPasswordForm(instance=user)
-            messages.add_message(request, messages.SUCCESS,"i am here")
     else:
         validlink = False
         reset_form = ResetPasswordForm(instance=user)
         title = ('Password reset unsuccessful')
-        messages.add_message(request, messages.SUCCESS,"reset failed")
     context = {
         'reset_form': ResetPasswordForm,
         'title': title,
