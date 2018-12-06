@@ -3,7 +3,10 @@
 
 
 
-
+{% block javascript %}
+	{% load staticfiles %}
+	<script src= "{% static 'js/drawingbox.js' %}" type="text/javascript"></script>
+{% endblock %}
 
 
   <div class="modal-dialog modal-lg">
