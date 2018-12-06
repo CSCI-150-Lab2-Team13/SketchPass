@@ -2,3 +2,6 @@
 /mainApp/*.pyc
 /SketchPassSite/*.pyc
 *.sqlite3
+home/__init__.pyc
+*.pyc
+*.pyc

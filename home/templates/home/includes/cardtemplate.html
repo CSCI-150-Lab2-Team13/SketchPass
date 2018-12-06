@@ -7,7 +7,7 @@
         <h6 class="card-subtitle mb-2 text-muted"> {{ category }}</h6>
         <p class="card-text">{{ desc|slice:":15" }}{%if desc|length > 15 %}...{% endif %}
         </p>
-        <a href="http://{{ url }}" class="card-link">{{ url|slice:":15" }}{%if url|length > 15 %}...{% endif %}</a>
+        <a href="http://{{ url }}" target="_blank" class="card-link">{{ url|slice:":15" }}{%if url|length > 15 %}...{% endif %}</a>
         <hr>
       </div>
       <form method="POST" action="{% url 'edit_website' %}">
